@@ -5,8 +5,6 @@
  */
 package MyApplicationService;
 
-import DAO.PessoaFisicaDAO;
-import DAO.UsuarioDAO;
 import Modelo.PessoaFisica;
 import Modelo.Usuario;
 import com.google.gson.Gson;
@@ -30,12 +28,12 @@ public class PfService {
        
        Gson gson = new Gson();
        String json = null;
-       try {
-           UsuarioDAO dao = new UsuarioDAO();
-           json = gson.toJson(dao.buscarPF(idUsuario));
-       } catch (SQLException ex) {
-           Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
-       }
+//       try {
+//           UsuarioDAO dao = new UsuarioDAO();
+//           json = gson.toJson(dao.buscarPF(idUsuario));
+//       } catch (SQLException ex) {
+//           Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
+//       }
        
        return json;
    }
@@ -45,10 +43,10 @@ public class PfService {
        Gson gson = new Gson();
        PessoaFisica u = gson.fromJson(json, PessoaFisica.class);
        
-       System.out.println("Deu certo " + u.getNomeUsuario());
-       PessoaFisicaDAO dao = new PessoaFisicaDAO();
-       dao.editarPF(u);
-       
+//       System.out.println("Deu certo " + u.getNomeUsuario());
+//       PessoaFisicaDAO dao = new PessoaFisicaDAO();
+//       dao.editarPF(u);
+//       
        String jsonSaida = gson.toJson(u);
        return jsonSaida;
    }

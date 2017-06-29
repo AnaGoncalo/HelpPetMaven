@@ -5,9 +5,6 @@
  */
 package MyApplicationService;
 
-import DAO.ExperienciaDAO;
-import DAO.PessoaFisicaDAO;
-import DAO.UsuarioDAO;
 import Modelo.Usuario;
 import com.google.gson.Gson;
 import java.sql.SQLException;
@@ -33,9 +30,9 @@ public class UsuarioService {
        Gson gson = new Gson();
        Usuario u = gson.fromJson(json, Usuario.class);
        
-       System.out.println("Deu certo " + u.getNomeUsuario());
-       UsuarioDAO dao = new UsuarioDAO();
-       dao.inserir(u);
+//       System.out.println("Deu certo " + u.getNomeUsuario());
+//       UsuarioDAO dao = new UsuarioDAO();
+//       dao.inserir(u);
        
        String jsonSaida = gson.toJson(u);
        return jsonSaida;    
@@ -47,11 +44,11 @@ public class UsuarioService {
        Gson gson = new Gson();
        Usuario u = gson.fromJson(json, Usuario.class);
        
-       System.out.println("Deu certo " + u.getNomeUsuario());
-       UsuarioDAO dao = new UsuarioDAO();
-       dao.editar(u);
-       u = dao.buscarById(u.getIdUsuario());
-       System.out.println("e ai");
+//       System.out.println("Deu certo " + u.getNomeUsuario());
+//       UsuarioDAO dao = new UsuarioDAO();
+//       dao.editar(u);
+//       u = dao.buscarById(u.getIdUsuario());
+//       System.out.println("e ai");
        String jsonSaida = gson.toJson(u);
        return jsonSaida;
    }
@@ -63,9 +60,9 @@ public class UsuarioService {
        Gson gson = new Gson();
        //Usuario u = gson.fromJson(json, Usuario.class);
        
-       System.out.println("Deu certo " + idUsuario);
-       UsuarioDAO dao = new UsuarioDAO();
-       dao.excluir(idUsuario);
+//       System.out.println("Deu certo " + idUsuario);
+//       UsuarioDAO dao = new UsuarioDAO();
+//       dao.excluir(idUsuario);
        
        String jsonSaida = gson.toJson(idUsuario);
        return jsonSaida;
@@ -78,15 +75,15 @@ public class UsuarioService {
        
        Gson gson = new Gson();
        String json = null;
-       try {
-           UsuarioDAO dao = new UsuarioDAO();
-           json = gson.toJson(dao.buscarById(idUsuario));
-//           Usuario u = gson.fromJson(json, Usuario.class);
-//           if(u.getIdPermissao() == 1)
-//               json = gson.toJson(PessoaFisicaDAO.byId(u.getIdUsuario()));
-       } catch (SQLException ex) {
-           Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
-       }
+//       try {
+//           UsuarioDAO dao = new UsuarioDAO();
+//           json = gson.toJson(dao.buscarById(idUsuario));
+////           Usuario u = gson.fromJson(json, Usuario.class);
+////           if(u.getIdPermissao() == 1)
+////               json = gson.toJson(PessoaFisicaDAO.byId(u.getIdUsuario()));
+//       } catch (SQLException ex) {
+//           Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
+//       }
        
        return json;
    }
