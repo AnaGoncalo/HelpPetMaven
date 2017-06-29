@@ -5,11 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>helppetmaven</groupId>
-
     <artifactId>helppetmaven</artifactId>
-
     <version>0.0.1-SNAPSHOT</version>
-
     <packaging>war</packaging>
 
     <build>
@@ -24,77 +21,37 @@
                 </configuration>
             </plugin>
             <plugin>
-
                 <artifactId>maven-surefire-plugin</artifactId>
-
                 <version>2.12</version>
-
                 <configuration>
-
                     <classpathDependencyExcludes>
-
                         <!-- exclude code absent api -->
-
                         <classpathDependencyExclude>javax.faces:javax.faces-api</classpathDependencyExclude>
-
                     </classpathDependencyExcludes>
-
                 </configuration>
-
             </plugin>
-
-
-
         </plugins>
-
     </build>
 
-
-
-
-
     <properties>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
     </properties>
-
-
-
+    
     <repositories>
-
-
-
         <repository>
-
             <id>prime-repo</id>
-
             <name>PrimeFaces Maven Repository</name>
-
             <url>http://repository.primefaces.org</url>
-
             <layout>default</layout>
-
         </repository>
-
-
-
     </repositories>
 
-
-
     <dependencies>
-
         <!-- JSF , versão certa do meu projeto -->
-
         <dependency>
-
             <groupId>org.glassfish</groupId>
-
             <artifactId>javax.faces</artifactId>
-
             <version>2.2.8</version>
-
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
@@ -156,7 +113,5 @@
         </dependency>
 
     </dependencies>
-
-
 
 </project>
