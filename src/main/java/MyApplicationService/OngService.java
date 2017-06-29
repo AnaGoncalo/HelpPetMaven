@@ -5,7 +5,6 @@
  */
 package MyApplicationService;
 
-import DAO.UsuarioDAO;
 import com.google.gson.Gson;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -27,12 +26,12 @@ public class OngService {
        
        Gson gson = new Gson();
        String json = null;
-       try {
-           UsuarioDAO dao = new UsuarioDAO();
-           json = gson.toJson(dao.listarOng());
-       } catch (SQLException ex) {
-           Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
-       }
+//       try {
+//           UsuarioDAO dao = new UsuarioDAO();
+//           json = gson.toJson(dao.listarOng());
+//       } catch (SQLException ex) {
+//           Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
+//       }
        
        return json;
    }

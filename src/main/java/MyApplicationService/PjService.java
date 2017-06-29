@@ -5,8 +5,6 @@
  */
 package MyApplicationService;
 
-import DAO.PessoaJuridicaDAO;
-import DAO.UsuarioDAO;
 import Modelo.PessoaJuridica;
 import com.google.gson.Gson;
 import java.sql.SQLException;
@@ -29,12 +27,12 @@ public class PjService {
        
        Gson gson = new Gson();
        String json = null;
-       try {
-           UsuarioDAO dao = new UsuarioDAO();
-           json = gson.toJson(dao.buscarPJ(idUsuario));
-       } catch (SQLException ex) {
-           Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
-       }
+//       try {
+//           UsuarioDAO dao = new UsuarioDAO();
+//           json = gson.toJson(dao.buscarPJ(idUsuario));
+//       } catch (SQLException ex) {
+//           Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
+//       }
        
        return json;
    }
@@ -44,9 +42,9 @@ public class PjService {
        Gson gson = new Gson();
        PessoaJuridica u = gson.fromJson(json, PessoaJuridica.class);
        
-       System.out.println("Deu certo " + u.getNomeUsuario());
-       PessoaJuridicaDAO dao = new PessoaJuridicaDAO();
-       dao.editarPJ(u);
+//       System.out.println("Deu certo " + u.getNomeUsuario());
+//       PessoaJuridicaDAO dao = new PessoaJuridicaDAO();
+//       dao.editarPJ(u);
        
        String jsonSaida = gson.toJson(u);
        return jsonSaida;

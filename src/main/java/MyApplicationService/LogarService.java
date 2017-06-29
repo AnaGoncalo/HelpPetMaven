@@ -5,7 +5,6 @@
  */
 package MyApplicationService;
 
-import DAO.UsuarioDAO;
 import Modelo.Usuario;
 import com.google.gson.Gson;
 import java.sql.SQLException;
@@ -28,19 +27,20 @@ public class LogarService {
        Usuario user = gson.fromJson(json, Usuario.class);
        
        Usuario usuarioLogado = new Usuario();
-       UsuarioDAO dao = new UsuarioDAO();
-       
-       String email = user.getEmail();
-       String senha = user.getSenha();
-       System.out.println("Deu certo " + email + " " + senha);
-       
-       try {
-           usuarioLogado = dao.logar(email, senha);
-       } catch (SQLException ex) {
-           Logger.getLogger(LogarService.class.getName()).log(Level.SEVERE, null, ex);
-       }
-       System.out.println("Service: Logou? " + usuarioLogado.getNomeUsuario());
-       String jsonSaida = gson.toJson(usuarioLogado);
+//       UsuarioDAO dao = new UsuarioDAO();
+//       
+//       String email = user.getEmail();
+//       String senha = user.getSenha();
+//       System.out.println("Deu certo " + email + " " + senha);
+//       
+//       try {
+//           usuarioLogado = dao.logar(email, senha);
+//       } catch (SQLException ex) {
+//           Logger.getLogger(LogarService.class.getName()).log(Level.SEVERE, null, ex);
+//       }
+//       System.out.println("Service: Logou? " + usuarioLogado.getNomeUsuario());
+       String jsonSaida = "";
+//       json = gson.toJson(usuarioLogado);
        return jsonSaida;
        
    }
