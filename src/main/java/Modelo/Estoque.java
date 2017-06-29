@@ -43,13 +43,12 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
-@SequenceGenerator(sequenceName = "seq_estoque", name = "ID_SEQUENCE", allocationSize = 1)
 public class Estoque implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID_SEQUENCE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     
     private String produto;
