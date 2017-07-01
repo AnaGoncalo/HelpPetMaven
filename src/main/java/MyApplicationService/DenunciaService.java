@@ -8,6 +8,7 @@ package MyApplicationService;
 import Modelo.Denuncia;
 import com.google.gson.Gson;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -19,15 +20,22 @@ import javax.ws.rs.Path;
  */
 @Path("denuncia")
 public class DenunciaService {
+	
+	List<Denuncia> lista = new ArrayList();
    // "http://localhost:8080/TesteWS/rest/denuncia"
    @GET
    public String listarDenuncias() throws SQLException
    {
 //       DenunciaDAO dao = new DenunciaDAO();
 //       List<Denuncia> denuncias = dao.ListarDenuncias();
-//       
+//     
+	   Denuncia d = new Denuncia();
+	   d.setTitulo("titulo a");
+	   lista.add(d);
+	   
        Gson gson = new Gson();
        String json = "";
+       json = gson.toJson(lista);
 //       json = gson.toJson(denuncias);
        
        return json;

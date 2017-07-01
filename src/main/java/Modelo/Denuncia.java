@@ -23,11 +23,8 @@ import lombok.ToString;
  *
  * @author anne
  */
-@Getter
-@Setter
 @ToString(exclude = "foto")
 @EqualsAndHashCode(exclude = {"id", "descricao", "foto"})
-@Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
@@ -51,6 +48,14 @@ public class Denuncia implements Serializable, Comparable<Denuncia> {
     private Date data;
     
     private String localizacao;
+    
+    public String getTitulo(){
+    	return titulo;
+    }
+    
+    public void setTitulo(String titulo){
+    	this.titulo = titulo;
+    }
     
     public boolean isEmpty(){
 	return !(this.titulo != null && this.descricao != null && this.tipo != null && this.localizacao != null);
