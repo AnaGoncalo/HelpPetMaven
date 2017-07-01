@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="testeMaven">
-	</persistence-unit>
+<persistence version="2.1" 
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="helppetweb" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>Modelo.Denuncia</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="postgres://oonsebmunusadl:70228b34ad5b76cf4dc3ab432561340bb8eef752cbf6d9ee87b22d3e2393e5c2@ec2-23-21-246-11.compute-1.amazonaws.com:5432/d711sukm3aiuq9"/>
+      <property name="javax.persistence.jdbc.user" value="oonsebmunusadl"/>
+      <property name="javax.persistence.jdbc.driver" value="jdbc:derby://ec2-23-21-246-11.compute-1.amazonaws.com:5432/d711sukm3aiuq9"/>
+      <property name="javax.persistence.jdbc.password" value="70228b34ad5b76cf4dc3ab432561340bb8eef752cbf6d9ee87b22d3e2393e5c2"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
 </persistence>
