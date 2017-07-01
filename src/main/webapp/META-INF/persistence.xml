@@ -16,11 +16,10 @@
     <class>Modelo.Estoque</class>
     <class>Modelo.Anuncio</class>
     
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="ec2-107-20-226-93.compute-1.amazonaws.com"/>
       <property name="javax.persistence.jdbc.user" value="fjvhbejxfckdtk"/>
-      <property name="javax.persistence.jdbc.driver" value="jdbc:derby://ec2-23-21-246-11.compute-1.amazonaws.com:5432/d4sd43prcqhvb8"/>
+      <property name="javax.persistence.jdbc.driver" value="jdbc:postgresql://ec2-23-21-246-11.compute-1.amazonaws.com:5432/d4sd43prcqhvb8"/>
       <property name="javax.persistence.jdbc.password" value="83b0231b808ef4c1dbb588e1e4b358766e51ceafe36a5b2ae25cd8024ca58691"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
       
