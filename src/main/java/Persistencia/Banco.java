@@ -29,7 +29,7 @@ public class Banco {
     private static EntityManager manager;
 
     private Banco() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("helppetweb");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("helppettads");
         manager = factory.createEntityManager();
     }
 

@@ -3,16 +3,19 @@
              xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="helppetweb" transaction-type="RESOURCE_LOCAL">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>Modelo.Denuncia</class>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+  <persistence-unit name="helppettads" transaction-type="RESOURCE_LOCAL">
     <properties>
       <property name="javax.persistence.jdbc.url" value="ec2-107-20-226-93.compute-1.amazonaws.com"/>
       <property name="javax.persistence.jdbc.user" value="fjvhbejxfckdtk"/>
       <property name="javax.persistence.jdbc.driver" value="jdbc:derby://ec2-23-21-246-11.compute-1.amazonaws.com:5432/d4sd43prcqhvb8"/>
       <property name="javax.persistence.jdbc.password" value="83b0231b808ef4c1dbb588e1e4b358766e51ceafe36a5b2ae25cd8024ca58691"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    
+      <property name="javax.persistence.schema-generation.create-source" value="metadata" />
+      <property name="javax.persistence.sql-load-script-source" value="META-INF/dados.sql"/>
+      		
+      <property name="hibernate.show_sql" value="true" />
+      <property name="hibernate.format_sql" value="true" />
     </properties>
   </persistence-unit>
 </persistence>
