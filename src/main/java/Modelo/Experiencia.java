@@ -30,13 +30,12 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
-@SequenceGenerator(sequenceName = "seq_experiencia", name = "ID_SEQUENCE", allocationSize = 1)
 public class Experiencia implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID_SEQUENCE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     
     private String titulo;

@@ -23,21 +23,17 @@ import lombok.ToString;
  *
  * @author anne
  */
-@Getter
-@Setter
 @ToString(exclude = "foto")
 @EqualsAndHashCode(exclude = {"id", "descricao", "foto"})
-@Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
-@SequenceGenerator(sequenceName = "seq_denuncia", name = "ID_SEQUENCE", allocationSize = 1)
 public class Denuncia implements Serializable, Comparable<Denuncia> {
     
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID_SEQUENCE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     
     private String titulo;
@@ -52,6 +48,14 @@ public class Denuncia implements Serializable, Comparable<Denuncia> {
     private Date data;
     
     private String localizacao;
+    
+    public String getTitulo(){
+    	return titulo;
+    }
+    
+    public void setTitulo(String titulo){
+    	this.titulo = titulo;
+    }
     
     public boolean isEmpty(){
 	return !(this.titulo != null && this.descricao != null && this.tipo != null && this.localizacao != null);
