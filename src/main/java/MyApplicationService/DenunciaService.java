@@ -49,7 +49,9 @@ public class DenunciaService {
 //       DenunciaDAO dao = new DenunciaDAO();
 //       dao.CadastrarDenuncia(a);
 //       
-       String jsonSaida = gson.toJson(a);
+       lista.add(a);
+//       String jsonSaida = gson.toJson(a);
+       String jsonSaida = "Ok!";
        return jsonSaida;
        
    }

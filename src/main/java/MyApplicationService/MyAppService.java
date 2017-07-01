@@ -6,6 +6,9 @@
 package MyApplicationService;
 
 import com.google.gson.Gson;
+
+import Modelo.ModeloTeste;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -28,10 +31,10 @@ public class MyAppService {
     @POST
     public String Testar2(String json) {
         Gson gson = new Gson();
-//        ModeloTeste mt = gson.fromJson(json, ModeloTeste.class);
+        System.out.println(json);
+        ModeloTeste mt = gson.fromJson(json, ModeloTeste.class);
 //        System.out.println("Deu certo " + mt.getNomeTeste());
         //ModeloTesteDAO.salvar(mt);
-        
         String jsonSaida = "";
 //        json = gson.toJson(mt);
         return "ok";
