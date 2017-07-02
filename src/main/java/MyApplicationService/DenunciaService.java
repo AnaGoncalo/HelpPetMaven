@@ -42,8 +42,25 @@ public class DenunciaService {
 	   d.setLocalizacao("Natal, RN");
 	   d.setTipo("Abandono");
 	   d.setFoto("imagens//denuncia1.jpg");
-//	   dao.inserir(d);
+	   lista.add(d);
 	   
+	   d.setId(new Long(2));
+	   d.setTitulo("Cachorros brigando");
+	   d.setDescricao("Cacchorros bringando no meio da noite!");
+	   d.setData("02/07/2017");
+	   d.setLocalizacao("Serra Caiada, RN");
+	   d.setTipo("Outro");
+	   d.setFoto("imagens//denuncia2.jpg");
+	   lista.add(d);
+	   
+	   d.setId(new Long(3));
+	   d.setTitulo("Homem batendo em animais");
+	   d.setDescricao("Meu vizinho usa um chicote para assustar os gatos que andam de noite");
+	   d.setData("02/07/2017");
+	   d.setLocalizacao("Serra Caiada, RN");
+	   d.setTipo("Maus Tratos");
+	   d.setFoto("imagens//denuncia3.jpg");
+//	   dao.inserir(d);
 	   lista.add(d);
 	   
        Gson gson = new Gson();
