@@ -37,8 +37,8 @@ public class DenunciaService {
 	   Denuncia d = new Denuncia();
 	   d.setId(new Long(1));
 	   d.setTitulo("Animal abandonado");
-	   d.setDescricao("Animal abandonado sem água e sem comida!");
-	   d.setData(new java.util.Date(2017, 7, 2));
+	   d.setDescricao("Animal abandonado sem agua e sem comida!");
+	   d.setData("02/07/2017");
 	   d.setLocalizacao("Natal, RN");
 	   d.setTipo("Abandono");
 	   d.setFoto("imagens//denuncia1.jpg");

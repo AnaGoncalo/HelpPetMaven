@@ -31,15 +31,14 @@ public class Denuncia implements Serializable, Comparable<Denuncia> {
     
     private String foto;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date data;
+    private String data;
     
     private String localizacao;
 
     public Denuncia() {
     }
 
-    public Denuncia(Long id, String titulo, String descricao, String tipo, String foto, Date data, String localizacao) {
+    public Denuncia(Long id, String titulo, String descricao, String tipo, String foto, String data, String localizacao) {
 	this.id = id;
 	this.titulo = titulo;
 	this.descricao = descricao;
@@ -89,11 +88,11 @@ public class Denuncia implements Serializable, Comparable<Denuncia> {
 	this.foto = foto;
     }
 
-    public Date getData() {
+    public String getData() {
 	return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
 	this.data = data;
     }
 
