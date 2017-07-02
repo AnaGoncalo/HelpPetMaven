@@ -7,26 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
-
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  *
  * @author anne
  */
-@ToString(exclude = "foto")
-@EqualsAndHashCode(exclude = {"id", "descricao", "foto"})
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+
 @Entity
 public class Denuncia implements Serializable, Comparable<Denuncia> {
     
@@ -48,6 +35,19 @@ public class Denuncia implements Serializable, Comparable<Denuncia> {
     private Date data;
     
     private String localizacao;
+
+    public Denuncia() {
+    }
+
+    public Denuncia(Long id, String titulo, String descricao, String tipo, String foto, Date data, String localizacao) {
+	this.id = id;
+	this.titulo = titulo;
+	this.descricao = descricao;
+	this.tipo = tipo;
+	this.foto = foto;
+	this.data = data;
+	this.localizacao = localizacao;
+    }
     
     public String getTitulo(){
     	return titulo;
@@ -55,6 +55,54 @@ public class Denuncia implements Serializable, Comparable<Denuncia> {
     
     public void setTitulo(String titulo){
     	this.titulo = titulo;
+    }
+
+    public Long getId() {
+	return id;
+    }
+
+    public void setId(Long id) {
+	this.id = id;
+    }
+
+    public String getDescricao() {
+	return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+	this.descricao = descricao;
+    }
+
+    public String getTipo() {
+	return tipo;
+    }
+
+    public void setTipo(String tipo) {
+	this.tipo = tipo;
+    }
+
+    public String getFoto() {
+	return foto;
+    }
+
+    public void setFoto(String foto) {
+	this.foto = foto;
+    }
+
+    public Date getData() {
+	return data;
+    }
+
+    public void setData(Date data) {
+	this.data = data;
+    }
+
+    public String getLocalizacao() {
+	return localizacao;
+    }
+
+    public void setLocalizacao(String localizacao) {
+	this.localizacao = localizacao;
     }
     
     public boolean isEmpty(){
