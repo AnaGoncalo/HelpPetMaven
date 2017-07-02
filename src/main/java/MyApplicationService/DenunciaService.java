@@ -8,6 +8,8 @@ package MyApplicationService;
 import Modelo.Denuncia;
 import Persistencia.DenunciaDao;
 import com.google.gson.Gson;
+
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +35,15 @@ public class DenunciaService {
 //       List<Denuncia> denuncias = dao.ListarDenuncias();
 //     
 	   Denuncia d = new Denuncia();
-	   d.setTitulo("titulo a");
+	   d.setId(new Long(1));
+	   d.setTitulo("Animal abandonado");
+	   d.setDescricao("Animal abandonado sem água e sem comida!");
+	   d.setData(new java.util.Date("02/07/2017"));
+	   d.setLocalizacao("Natal, RN");
+	   d.setTipo("Abandono");
+	   d.setFoto("imagens//denuncia1.jpg");
 //	   dao.inserir(d);
+	   
 	   lista.add(d);
 	   
        Gson gson = new Gson();
