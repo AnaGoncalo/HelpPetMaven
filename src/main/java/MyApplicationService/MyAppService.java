@@ -8,6 +8,10 @@ package MyApplicationService;
 import com.google.gson.Gson;
 
 import Modelo.ModeloTeste;
+import Modelo.Denuncia;
+import Persistencia.DenunciaDao;
+
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -21,9 +25,12 @@ import javax.ws.rs.Path;
 // "http://localhost:8080/TesteWS/rest/myapp"
 @Path("myapp")
 public class MyAppService {
-    
+	
+	private DenunciaDao dao = new DenunciaDao();
+	
     @GET
     public String Testar() {
+    	List<Denuncia> denuncias = dao.listarTodos();
         return "Oii sou um servico";
     }
     

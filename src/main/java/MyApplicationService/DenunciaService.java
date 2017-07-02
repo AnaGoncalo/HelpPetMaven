@@ -44,24 +44,26 @@ public class DenunciaService {
 	   d.setFoto("imagens//denuncia1.jpg");
 	   lista.add(d);
 	   
-	   d.setId(new Long(2));
-	   d.setTitulo("Cachorros brigando");
-	   d.setDescricao("Cacchorros bringando no meio da noite!");
-	   d.setData("02/07/2017");
-	   d.setLocalizacao("Serra Caiada, RN");
-	   d.setTipo("Outro");
-	   d.setFoto("imagens//denuncia2.jpg");
-	   lista.add(d);
+	   Denuncia d2 = new Denuncia();
+	   d2.setId(new Long(2));
+	   d2.setTitulo("Cachorros brigando");
+	   d2.setDescricao("Cacchorros bringando no meio da noite!");
+	   d2.setData("02/07/2017");
+	   d2.setLocalizacao("Serra Caiada, RN");
+	   d2.setTipo("Outro");
+	   d2.setFoto("imagens//denuncia2.jpg");
+	   lista.add(d2);
 	   
-	   d.setId(new Long(3));
-	   d.setTitulo("Homem batendo em animais");
-	   d.setDescricao("Meu vizinho usa um chicote para assustar os gatos que andam de noite");
-	   d.setData("02/07/2017");
-	   d.setLocalizacao("Serra Caiada, RN");
-	   d.setTipo("Maus Tratos");
-	   d.setFoto("imagens//denuncia3.jpg");
+	   Denuncia d3 = new Denuncia();
+	   d3.setId(new Long(3));
+	   d3.setTitulo("Homem batendo em animais");
+	   d3.setDescricao("Meu vizinho usa um chicote para assustar os gatos que andam de noite");
+	   d3.setData("02/07/2017");
+	   d3.setLocalizacao("Serra Caiada, RN");
+	   d3.setTipo("Maus Tratos");
+	   d3.setFoto("imagens//denuncia3.jpg");
 //	   dao.inserir(d);
-	   lista.add(d);
+	   lista.add(d3);
 	   
        Gson gson = new Gson();
        String json = "";
