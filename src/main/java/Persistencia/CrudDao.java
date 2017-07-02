@@ -35,7 +35,7 @@ public abstract class CrudDao<T> {
     }
     
     /**
-     * @param Entiade a ser pesistida.
+     * @param Entidade a ser pesistida.
      * @return Retorna TRUE se a entidade for persistida no banco de dados
      * e FALSE se houver um erro durante a persitência.
      */

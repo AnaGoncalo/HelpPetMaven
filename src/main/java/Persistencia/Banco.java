@@ -25,8 +25,8 @@ import javax.persistence.Persistence;
  */
 public class Banco {
     
-    private static final Banco instanciaDeBanco = new Banco();
-    private static EntityManager manager;
+    private static Banco instanciaDeBanco;// = new Banco();
+    private EntityManager manager;
 
     private Banco() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("helppettads");
@@ -38,6 +38,8 @@ public class Banco {
      * @return Instância de Banco de Dados.
      */
     public static Banco getInstance() {
+	if (instanciaDeBanco == null)
+	    instanciaDeBanco = new Banco();
         return instanciaDeBanco;
     }
 
