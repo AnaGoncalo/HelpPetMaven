@@ -22,7 +22,7 @@ import javax.ws.rs.Path;
 @Path("denuncia")
 public class DenunciaService {
     
-    private DenunciaDao dao = new DenunciaDao();
+//    private DenunciaDao dao = new DenunciaDao();
 	
 	List<Denuncia> lista = new ArrayList();
    // "http://localhost:8080/TesteWS/rest/denuncia"
@@ -34,7 +34,7 @@ public class DenunciaService {
 //     
 	   Denuncia d = new Denuncia();
 	   d.setTitulo("titulo a");
-	   dao.inserir(d);
+//	   dao.inserir(d);
 	   lista.add(d);
 	   
        Gson gson = new Gson();
