@@ -119,7 +119,7 @@ public abstract class CrudDao<T> {
 //        javax.persistence.criteria.CriteriaQuery cq = Banco.getInstance().getEntityManager().getCriteriaBuilder().createQuery();
         javax.persistence.criteria.CriteriaQuery cq = JpaUtil.getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
-        return Banco.getInstance().getEntityManager().createQuery(cq).getResultList();
+        return JpaUtil.getEntityManager().createQuery(cq).getResultList();
     }
 
 }
