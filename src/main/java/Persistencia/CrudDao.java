@@ -116,10 +116,12 @@ public abstract class CrudDao<T> {
      * @return Lista genérica de entidades
      */
     public List<T> listarTodos() {
+    	EntityManager em = JpaUtil.getEntityManager();
 //        javax.persistence.criteria.CriteriaQuery cq = Banco.getInstance().getEntityManager().getCriteriaBuilder().createQuery();
-        javax.persistence.criteria.CriteriaQuery cq = JpaUtil.getEntityManager().getCriteriaBuilder().createQuery();
+        javax.persistence.criteria.CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
-        return JpaUtil.getEntityManager().createQuery(cq).getResultList();
+//        return Banco.getInstance().getEntityManager().createQuery(cq).getResultList();
+        return em.createQuery(cq).getResultList();
     }
 
 }
