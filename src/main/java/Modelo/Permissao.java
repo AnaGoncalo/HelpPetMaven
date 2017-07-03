@@ -41,6 +41,18 @@ public class Permissao implements Serializable {
     @OneToMany(mappedBy = "permissao")
     private Set<Usuario> usuarios;
 
+	public Permissao() {
+		super();
+	}
+
+	public Permissao(Long id, String nome, String descricao, Set<Usuario> usuarios) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.usuarios = usuarios;
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -62,6 +62,29 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "usuario")
     private Set<Experiencia> experiencias;
 
+	public Usuario() {
+		super();
+	}
+
+	public Usuario(Long id, String nome, String email, String senha, String foto, String nascimento, String localizacao,
+			String telefone, Permissao permissao, Set<Animal> animais, Set<Evento> eventos, Set<Anuncio> anuncios,
+			Set<Experiencia> experiencias) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.foto = foto;
+		this.nascimento = nascimento;
+		this.localizacao = localizacao;
+		this.telefone = telefone;
+		this.permissao = permissao;
+		this.animais = animais;
+		this.eventos = eventos;
+		this.anuncios = anuncios;
+		this.experiencias = experiencias;
+	}
+
 	public Long getId() {
 		return id;
 	}

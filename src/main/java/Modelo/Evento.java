@@ -62,6 +62,23 @@ public class Evento implements Serializable {
     @ManyToOne
     private Usuario responsavel;
 
+	public Evento() {
+		super();
+	}
+
+	public Evento(Long id, String nome, Date data, String horario, String localizacao, String descricao, String foto,
+			Usuario responsavel) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.data = data;
+		this.horario = horario;
+		this.localizacao = localizacao;
+		this.descricao = descricao;
+		this.foto = foto;
+		this.responsavel = responsavel;
+	}
+
 	public Long getId() {
 		return id;
 	}

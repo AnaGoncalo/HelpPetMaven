@@ -45,6 +45,21 @@ public class Experiencia implements Serializable {
     @ManyToOne
     private Usuario usuario;
 
+	public Experiencia() {
+		super();
+	}
+
+	public Experiencia(Long id, String titulo, String tipo, String texto, String foto, Date cadastro, Usuario usuario) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.tipo = tipo;
+		this.texto = texto;
+		this.foto = foto;
+		this.cadastro = cadastro;
+		this.usuario = usuario;
+	}
+
 	public Long getId() {
 		return id;
 	}

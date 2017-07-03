@@ -54,6 +54,20 @@ public class Estoque implements Serializable {
     
     @ManyToOne
     private PessoaJuridica ong;
+    
+	public Estoque() {
+		super();
+	}
+
+	public Estoque(Long id, String produto, String tipo, double qtdAtual, double qtdIdeal, PessoaJuridica ong) {
+		super();
+		this.id = id;
+		this.produto = produto;
+		this.tipo = tipo;
+		this.qtdAtual = qtdAtual;
+		this.qtdIdeal = qtdIdeal;
+		this.ong = ong;
+	}
 
 	public Long getId() {
 		return id;

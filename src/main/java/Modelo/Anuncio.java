@@ -55,6 +55,20 @@ public class Anuncio implements Serializable {
     @ManyToOne
     private Usuario responsavel;
 
+	public Anuncio() {
+		super();
+	}
+
+	public Anuncio(Long id, String titulo, String tipo, String descricao, String foto, Usuario responsavel) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.tipo = tipo;
+		this.descricao = descricao;
+		this.foto = foto;
+		this.responsavel = responsavel;
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -58,7 +58,31 @@ public class Animal implements Serializable {
     
     private String localizacao;
     
-    public Long getId() {
+    public Animal() {
+		super();
+	}
+
+	public Animal(Long id, String nome, String tipo, String especie, String raca, String idade, String sexo,
+			String descricao, String foto, Date cadastro, boolean status, String localizacao, Usuario responsavel,
+			Set<Encontro> encontros) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.tipo = tipo;
+		this.especie = especie;
+		this.raca = raca;
+		this.idade = idade;
+		this.sexo = sexo;
+		this.descricao = descricao;
+		this.foto = foto;
+		this.cadastro = cadastro;
+		this.status = status;
+		this.localizacao = localizacao;
+		this.responsavel = responsavel;
+		this.encontros = encontros;
+	}
+
+	public Long getId() {
 		return id;
 	}
 

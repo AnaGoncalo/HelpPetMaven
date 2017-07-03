@@ -57,6 +57,19 @@ public class PessoaJuridica implements Serializable {
     @OneToMany(mappedBy = "ong")
     private Set<Estoque> estoques;
 
+	public PessoaJuridica() {
+		super();
+	}
+
+	public PessoaJuridica(Long id, String cnpj, String funcionamento, Usuario usuario, Set<Estoque> estoques) {
+		super();
+		this.id = id;
+		this.cnpj = cnpj;
+		this.funcionamento = funcionamento;
+		this.usuario = usuario;
+		this.estoques = estoques;
+	}
+
 	public Long getId() {
 		return id;
 	}

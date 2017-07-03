@@ -63,7 +63,23 @@ public class Encontro implements Serializable {
     @ManyToOne
     private PessoaFisica adotante;
 
-    public boolean isEmpty() {
+    public Encontro() {
+		super();
+	}
+
+	public Encontro(Long id, Date dataHorario, String localizacao, boolean editado, boolean status, Animal animal,
+			PessoaFisica adotante) {
+		super();
+		this.id = id;
+		this.dataHorario = dataHorario;
+		this.localizacao = localizacao;
+		this.editado = editado;
+		this.status = status;
+		this.animal = animal;
+		this.adotante = adotante;
+	}
+
+	public boolean isEmpty() {
         return !(this.animal != null && this.adotante != null && this.localizacao != null && this.dataHorario != null);
     }
 

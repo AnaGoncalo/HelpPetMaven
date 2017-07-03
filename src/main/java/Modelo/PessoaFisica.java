@@ -54,6 +54,18 @@ public class PessoaFisica implements Serializable {
     @OneToMany(mappedBy = "adotante")
     private Set<Encontro> encontros;
 
+	public PessoaFisica() {
+		super();
+	}
+
+	public PessoaFisica(Long id, String cpf, Usuario usuario, Set<Encontro> encontros) {
+		super();
+		this.id = id;
+		this.cpf = cpf;
+		this.usuario = usuario;
+		this.encontros = encontros;
+	}
+
 	public Long getId() {
 		return id;
 	}
