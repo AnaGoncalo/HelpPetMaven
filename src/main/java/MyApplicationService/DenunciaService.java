@@ -47,7 +47,7 @@ public class DenunciaService {
 	   Denuncia d2 = new Denuncia();
 	   d2.setId(new Long(2));
 	   d2.setTitulo("Cachorros brigando");
-	   d2.setDescricao("Cacchorros bringando no meio da noite!");
+	   d2.setDescricao("Cachorros bringando no meio da noite!");
 	   d2.setData("02/07/2017");
 	   d2.setLocalizacao("Serra Caiada, RN");
 	   d2.setTipo("Outro");

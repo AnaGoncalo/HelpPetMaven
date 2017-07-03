@@ -20,6 +20,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 
+import util.JpaUtil;
+
 import javax.persistence.EntityManager;
 
 /**
@@ -40,7 +42,8 @@ public abstract class CrudDao<T> {
      * e FALSE se houver um erro durante a persitência.
      */
     public boolean inserir(T entidade) {
-        EntityManager em = Banco.getInstance().getEntityManager();
+//        EntityManager em = Banco.getInstance().getEntityManager();
+    	EntityManager em = JpaUtil.getEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(entidade);
@@ -113,7 +116,8 @@ public abstract class CrudDao<T> {
      * @return Lista genérica de entidades
      */
     public List<T> listarTodos() {
-        javax.persistence.criteria.CriteriaQuery cq = Banco.getInstance().getEntityManager().getCriteriaBuilder().createQuery();
+//        javax.persistence.criteria.CriteriaQuery cq = Banco.getInstance().getEntityManager().getCriteriaBuilder().createQuery();
+        javax.persistence.criteria.CriteriaQuery cq = JpaUtil.getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return Banco.getInstance().getEntityManager().createQuery(cq).getResultList();
     }
