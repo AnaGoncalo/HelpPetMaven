@@ -7,22 +7,22 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
 			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.8.114.130/gerenciadorautoescola"/>-->
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1/helppettads"/>
-			<!-- <property name="javax.persistence.jdbc.url" value="postgres://fjvhbejxfckdtk:83b0231b808ef4c1dbb588e1e4b358766e51ceafe36a5b2ae25cd8024ca58691@ec2-107-20-226-93.compute-1.amazonaws.com:5432/d4sd43prcqhvb8"/>-->   
+			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1/helppettads"/>-->
+			<property name="javax.persistence.jdbc.url" value="postgres://fjvhbejxfckdtk:83b0231b808ef4c1dbb588e1e4b358766e51ceafe36a5b2ae25cd8024ca58691@ec2-107-20-226-93.compute-1.amazonaws.com:5432/d4sd43prcqhvb8"/>   
 			
-			<!-- <property name="javax.persistence.jdbc.user" value="adminIg9QcqQ" />  -->
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<!-- <property name="javax.persistence.jdbc.user" value="fjvhbejxfckdtk" /> --> 
 			
-			<!--<property name="javax.persistence.jdbc.password" value="Fimqzy5R1Y-I" /> -->
-			<property name="javax.persistence.jdbc.password" value="ananne" />
-			<!-- <property name="javax.persistence.jdbc.password" value="83b0231b808ef4c1dbb588e1e4b358766e51ceafe36a5b2ae25cd8024ca58691" />-->  
+			<!-- <property name="javax.persistence.jdbc.user" value="root" />-->
+			<property name="javax.persistence.jdbc.user" value="fjvhbejxfckdtk" />  
 			
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<!-- <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> --> 
 			
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
-			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> -->
+			<!--<property name="javax.persistence.jdbc.password" value="ananne" />-->
+			 <property name="javax.persistence.jdbc.password" value="83b0231b808ef4c1dbb588e1e4b358766e51ceafe36a5b2ae25cd8024ca58691" />  
+			
+			<!--<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />-->
+			 <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />  
+			
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />-->
+			 <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> 
 			
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
