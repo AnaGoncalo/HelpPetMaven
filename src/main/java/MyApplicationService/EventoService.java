@@ -6,6 +6,8 @@
 package MyApplicationService;
 
 import Modelo.Evento;
+import Persistencia.EventoDao;
+
 import com.google.gson.Gson;
 import java.sql.SQLException;
 import java.util.List;
@@ -28,12 +30,12 @@ public class EventoService {
    @GET
    public String listarEvento() throws SQLException
    {
-//       EventoDAO dao = new EventoDAO();
-//       List<Evento> eventos = dao.ListarEventos();
-//       
+       EventoDao dao = new EventoDao();
+       List<Evento> eventos = dao.listarTodos();
+       
        Gson gson = new Gson();
        String json = "";
-//       json = gson.toJson(eventos);
+       json = gson.toJson(eventos);
        
        return json;
    } 
@@ -43,10 +45,8 @@ public class EventoService {
    public String cadastrarEvento(String json) throws SQLException{
        Gson gson = new Gson();
        Evento a = gson.fromJson(json, Evento.class);
-//       System.out.println("Deu certo " + a.getNomeEvento());
-       
-//       EventoDAO dao = new EventoDAO();
-//       dao.CadastrarEvento(a);
+       EventoDao dao = new EventoDao();
+       dao.inserir(a);
        
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
@@ -57,10 +57,8 @@ public class EventoService {
    public String editarEvento(String json) throws SQLException{
        Gson gson = new Gson();
        Evento a = gson.fromJson(json, Evento.class);
-//       System.out.println("Deu certo " + a.getNomeEvento());
-//       
-//       EventoDAO dao = new EventoDAO();
-//       dao.EditarEvento(a);
+       EventoDao dao = new EventoDao();
+       dao.alterar(a);
        
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
@@ -68,17 +66,13 @@ public class EventoService {
    
    // "http://localhost:8080/TesteWS/rest/evento/{idEvento}"
    @DELETE
-   @Path("{idEvento}")
-   public String excluirEvento(@PathParam("idEvento") int idEvento) throws SQLException{
+   public String excluirEvento(String json) throws SQLException{
        Gson gson = new Gson();
-       //Evento a = gson.fromJson(json, Evento.class);
+       Evento a = gson.fromJson(json, Evento.class);
+       EventoDao dao = new EventoDao();
+       dao.excluir(a);
        
-//       System.out.println("Deu certo " + idEvento);
-//       EventoDAO dao = new EventoDAO();
-//       dao.ExcluirEvento(idEvento);
-       
-       String jsonSaida = gson.toJson(idEvento);
-       return jsonSaida;
+       return "ok";
    }
    
    // "http://localhost:8080/TesteWS/rest/evento/{idUsuario}"
@@ -88,12 +82,8 @@ public class EventoService {
        
        Gson gson = new Gson();
        String json = null;
-//       try {
-//           EventoDAO dao = new EventoDAO();
-//           json = gson.toJson(dao.ListarPorUsuario(idUsuario));
-//       } catch (SQLException ex) {
-//           Logger.getLogger(EventoService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
+       EventoDao dao = new EventoDao();
+       json = gson.toJson(dao.pesquisarPorId(idUsuario));
        
        return json;
    }

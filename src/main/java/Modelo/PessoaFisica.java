@@ -37,13 +37,6 @@ import lombok.ToString;
  *
  * @author anne
  */
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
-@Builder
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 public class PessoaFisica implements Serializable {
     
@@ -60,5 +53,43 @@ public class PessoaFisica implements Serializable {
     
     @OneToMany(mappedBy = "adotante")
     private Set<Encontro> encontros;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Set<Encontro> getEncontros() {
+		return encontros;
+	}
+
+	public void setEncontros(Set<Encontro> encontros) {
+		this.encontros = encontros;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+    
+    
     
 }

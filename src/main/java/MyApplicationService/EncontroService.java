@@ -15,6 +15,7 @@ import javax.ws.rs.PathParam;
 import com.google.gson.Gson;
 
 import Modelo.Encontro;
+import Persistencia.EncontroDao;
 /**
  *
  * @author Ana Gonçalo
@@ -23,28 +24,25 @@ import Modelo.Encontro;
 public class EncontroService {
     // "http://localhost:8080/TesteWS/rest/encontro"
    @GET
-   public String listarEncontros() throws SQLException
+   public String listarEncontros()
    {
-//       EncontroDAO dao = new EncontroDAO();
-//       List<Encontro> encontros = dao.ListarEncontros();
+       EncontroDao dao = new EncontroDao();
+       List<Encontro> encontros = dao.listarTodos();
        
        Gson gson = new Gson();
        String json = "";
-//       json = gson.toJson(encontros);
+       json = gson.toJson(encontros);
        
        return json;
    } 
    
    // "http://localhost:8080/TesteWS/rest/encontro"
    @POST
-   public String cadastrarEncontro(String json) throws SQLException{
+   public String cadastrarEncontro(String json) {
        Gson gson = new Gson();
        Encontro a = gson.fromJson(json, Encontro.class);
-       //a.setIdUsuario(1);
-//       System.out.println("Ainda não deu certo" + a.getAdotante().getIdUsuario());
-//       //System.out.println("Deu certo " + a.getIdAnimal());
-//       EncontroDAO dao = new EncontroDAO();
-//       dao.CadastrarEncontro(a);
+       EncontroDao dao = new EncontroDao();
+       dao.inserir(a);
        
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
@@ -52,12 +50,12 @@ public class EncontroService {
    
    // "http://localhost:8080/TesteWS/rest/encontro"
    @PUT
-   public String editarEncontro(String json) throws SQLException{
+   public String editarEncontro(String json) {
        Gson gson = new Gson();
        Encontro a = gson.fromJson(json, Encontro.class);
        
-//       EncontroDAO dao = new EncontroDAO();
-//       dao.EditarEncontro(a);
+       EncontroDao dao = new EncontroDao();
+       dao.alterar(a);
 //       
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
@@ -65,17 +63,13 @@ public class EncontroService {
    
    // "http://localhost:8080/TesteWS/rest/encontro/{idEncontro}"
    @DELETE
-   @Path("{idEncontro}")
-   public String excluirEncontro(@PathParam("idEncontro") int idEncontro) throws SQLException{
+   public String excluirEncontro(String json) {
        Gson gson = new Gson();
-       //Encontro a = gson.fromJson(json, Encontro.class);
-       System.out.println("EncontroService excluir" + idEncontro);
+       Encontro a = gson.fromJson(json, Encontro.class);
+       EncontroDao dao = new EncontroDao();
+       dao.excluir(a);
        
-//       EncontroDAO dao = new EncontroDAO();
-//       dao.ExcluirEncontro(idEncontro);
-       
-       String jsonSaida = gson.toJson(idEncontro);
-       return jsonSaida;
+       return a.getId() + " excluido!";
    }
    
    // "http://localhost:8080/TesteWS/rest/encontro/{idUsuario}"
@@ -85,13 +79,9 @@ public class EncontroService {
        
        Gson gson = new Gson();
        String json = null;
-//       try {
-//           EncontroDAO dao = new EncontroDAO();
-//           json = gson.toJson(dao.ListarPorUsuario(idUsuario));
-//       } catch (SQLException ex) {
-//           Logger.getLogger(EncontroService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
-//       
+       EncontroDao dao = new EncontroDao();
+       json = gson.toJson(dao.pesquisarPorId(idUsuario));
+       
        return json;
    }
 }

@@ -7,6 +7,9 @@ package MyApplicationService;
 
 
 import com.google.gson.Gson;
+
+import Persistencia.PessoaJuridicaDao;
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,14 +28,10 @@ public class ClinicaService {
    @GET
    public String listarPJs(){
        
-       Gson gson = new Gson();
+	   Gson gson = new Gson();
        String json = null;
-//       try {
-//           UsuarioDAO dao = new UsuarioDAO();
-//           json = gson.toJson(dao.listarClinicaPetshops());
-//       } catch (SQLException ex) {
-//           Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
+       PessoaJuridicaDao dao = new PessoaJuridicaDao();
+       json = gson.toJson(dao.listarTodos());
        
        return json;
    }

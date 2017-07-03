@@ -24,13 +24,6 @@ import lombok.ToString;
  *
  * @author anne
  */
-@Getter
-@Setter
-@ToString(exclude = "foto")
-@EqualsAndHashCode(exclude = {"id", "foto", "nascimento", "localizacao"})
-@Builder
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 public class Usuario implements Serializable {
     
@@ -68,5 +61,114 @@ public class Usuario implements Serializable {
     
     @OneToMany(mappedBy = "usuario")
     private Set<Experiencia> experiencias;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getNascimento() {
+		return nascimento;
+	}
+
+	public void setNascimento(String nascimento) {
+		this.nascimento = nascimento;
+	}
+
+	public String getLocalizacao() {
+		return localizacao;
+	}
+
+	public void setLocalizacao(String localizacao) {
+		this.localizacao = localizacao;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public Permissao getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(Permissao permissao) {
+		this.permissao = permissao;
+	}
+
+	public Set<Animal> getAnimais() {
+		return animais;
+	}
+
+	public void setAnimais(Set<Animal> animais) {
+		this.animais = animais;
+	}
+
+	public Set<Evento> getEventos() {
+		return eventos;
+	}
+
+	public void setEventos(Set<Evento> eventos) {
+		this.eventos = eventos;
+	}
+
+	public Set<Anuncio> getAnuncios() {
+		return anuncios;
+	}
+
+	public void setAnuncios(Set<Anuncio> anuncios) {
+		this.anuncios = anuncios;
+	}
+
+	public Set<Experiencia> getExperiencias() {
+		return experiencias;
+	}
+
+	public void setExperiencias(Set<Experiencia> experiencias) {
+		this.experiencias = experiencias;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+    
     
 }

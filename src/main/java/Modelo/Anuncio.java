@@ -35,13 +35,6 @@ import lombok.ToString;
  *
  * @author anne
  */
-@Getter
-@Setter
-@ToString(exclude = "foto")
-@EqualsAndHashCode(exclude = {"id", "foto"})
-@Builder
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 public class Anuncio implements Serializable {
     
@@ -61,5 +54,57 @@ public class Anuncio implements Serializable {
     
     @ManyToOne
     private Usuario responsavel;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public Usuario getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(Usuario responsavel) {
+		this.responsavel = responsavel;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 }

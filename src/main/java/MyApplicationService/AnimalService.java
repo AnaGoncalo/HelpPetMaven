@@ -7,6 +7,8 @@ package MyApplicationService;
 
 
 import Modelo.Animal;
+import Persistencia.AnimalDao;
+
 import com.google.gson.Gson;
 import java.sql.SQLException;
 import java.util.Date;
@@ -32,13 +34,9 @@ public class AnimalService {
    public String listar()
    {
        List<Animal> animais = null;
-//       try {
-//           AnimalDAO dao = new AnimalDAO();
-//           animais = dao.ListarAnimaisNaoAdotados();
-//       } catch (SQLException ex) {
-//           Logger.getLogger(AnimalService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
-//       
+       AnimalDao dao = new AnimalDao();
+       animais = dao.listarTodos();
+       
        Gson gson = new Gson();
        String json = gson.toJson(animais);
        
@@ -52,13 +50,9 @@ public class AnimalService {
        
        Gson gson = new Gson();
        String json = null;
-//       try {
-//           AnimalDAO dao = new AnimalDAO();
-//           json = gson.toJson(dao.ListarPorUsuario(idUsuario));
-//       } catch (SQLException ex) {
-//           Logger.getLogger(AnimalService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
-//       
+       AnimalDao dao = new AnimalDao();
+       json = gson.toJson(dao.pesquisarPorId(idUsuario));
+       
        return json;
    }
    
@@ -69,15 +63,9 @@ public class AnimalService {
        Gson gson = new Gson();
        Animal a = gson.fromJson(json, Animal.class);
        
-//       System.out.println("Deu certo " + a.getNomeAnimal());
-//       
-//       try {
-//           AnimalDAO dao = new AnimalDAO();
-//           dao.CadastrarAnimal(a);
-//       } catch (SQLException ex) {
-//           Logger.getLogger(AnimalService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
-//       
+       AnimalDao dao = new AnimalDao();
+       dao.inserir(a);
+       
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
        
@@ -90,15 +78,9 @@ public class AnimalService {
        Gson gson = new Gson();
        Animal a = gson.fromJson(json, Animal.class);
        
-//       System.out.println("Deu certo " + a.getNomeAnimal());
-//       
-//       try {
-//           AnimalDAO dao = new AnimalDAO();
-//           dao.EditarAnimal(a);
-//       } catch (SQLException ex) {
-//           Logger.getLogger(AnimalService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
-//       
+       AnimalDao dao = new AnimalDao();
+       dao.alterar(a);
+       
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
        
@@ -106,23 +88,15 @@ public class AnimalService {
    
    // "http://localhost:8080/TesteWS/rest/animal"
    @DELETE
-   @Path("{idAnimal}")
-   public String excluirAnimal(@PathParam("idAnimal") int idAnimal) 
+   public String excluirAnimal(String json) 
    {
        Gson gson = new Gson();
-       //Animal a = gson.fromJson(json, Animal.class);
+       Animal a = gson.fromJson(json, Animal.class);
        
-       System.out.println("Deu certo " + idAnimal);
+       AnimalDao dao = new AnimalDao();
+           dao.excluir(a);
        
-//       try {
-//           AnimalDAO dao = new AnimalDAO();
-//           dao.ExcluirAnimal(idAnimal);
-//       } catch (SQLException ex) {
-//           Logger.getLogger(AnimalService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
-//       
-       String jsonSaida = gson.toJson(idAnimal);
-       return jsonSaida;
+       return a.getNome() + " excluido!";
        
    }
 }

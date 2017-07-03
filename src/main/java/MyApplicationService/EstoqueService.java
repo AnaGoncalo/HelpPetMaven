@@ -11,6 +11,8 @@ package MyApplicationService;
  */
 
 import Modelo.Estoque;
+import Persistencia.EstoqueDao;
+
 import com.google.gson.Gson;
 import java.sql.SQLException;
 import java.util.List;
@@ -29,12 +31,12 @@ public class EstoqueService {
    @GET
    public String listarEstoque() throws SQLException
    {
-//       EstoqueDAO dao = new EstoqueDAO();
-//       List<Estoque> estoques = dao.ListarEstoques();
+       EstoqueDao dao = new EstoqueDao();
+       List<Estoque> estoques = dao.listarTodos();
        
        Gson gson = new Gson();
        String json = "";
-//       json = gson.toJson(estoques);
+       json = gson.toJson(estoques);
        
        return json;
    } 
@@ -44,12 +46,9 @@ public class EstoqueService {
    public String cadastrarEstoque(String json) throws SQLException{
        Gson gson = new Gson();
        Estoque a = gson.fromJson(json, Estoque.class);
-       //a.setIdUsuario(1);
-//       System.out.println("Deu certo " + a.getNomeEstoque());
-//       
-//       EstoqueDAO dao = new EstoqueDAO();
-//       dao.CadastrarEstoque(a);
-//       
+       EstoqueDao dao = new EstoqueDao();
+       dao.inserir(a);
+       
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
    }
@@ -60,10 +59,8 @@ public class EstoqueService {
        Gson gson = new Gson();
        Estoque a = gson.fromJson(json, Estoque.class);
        
-//       System.out.println("Deu certo " + a.getNomeEstoque());
-//       
-//       EstoqueDAO dao = new EstoqueDAO();
-//       dao.EditarEstoque(a);
+       EstoqueDao dao = new EstoqueDao();
+       dao.alterar(a);
        
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
@@ -71,18 +68,14 @@ public class EstoqueService {
    
    // "http://localhost:8080/TesteWS/rest/estoque/{idEstoque}"
    @DELETE
-   @Path("{idEstoque}")
-   public String excluirEstoque(@PathParam("idEstoque") int idEstoque) throws SQLException{
+   public String excluirEstoque(String json) throws SQLException{
        Gson gson = new Gson();
-       //Estoque a = gson.fromJson(json, Estoque.class);
+       Estoque a = gson.fromJson(json, Estoque.class);
        
-       System.out.println("Deu certo " + idEstoque);
+       EstoqueDao dao = new EstoqueDao();
+       dao.excluir(a);
        
-//       EstoqueDAO dao = new EstoqueDAO();
-//       dao.ExcluirEstoque(idEstoque);
-       
-       String jsonSaida = gson.toJson(idEstoque);
-       return jsonSaida;
+       return a.getProduto() + " excluido!";
    }
    
    // "http://localhost:8080/TesteWS/rest/estoque/{idUsuario}"
@@ -92,12 +85,8 @@ public class EstoqueService {
        
        Gson gson = new Gson();
        String json = null;
-//       try {
-//           EstoqueDAO dao = new EstoqueDAO();
-//           json = gson.toJson(dao.ListarPorUsuario(idUsuario));
-//       } catch (SQLException ex) {
-//           Logger.getLogger(EstoqueService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
+       EstoqueDao dao = new EstoqueDao();
+       json = gson.toJson(dao.pesquisarPorId(idUsuario));
        
        return json;
    }

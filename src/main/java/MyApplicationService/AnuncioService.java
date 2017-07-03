@@ -6,6 +6,8 @@
 package MyApplicationService;
 
 import Modelo.Anuncio;
+import Persistencia.AnuncioDao;
+
 import com.google.gson.Gson;
 import java.sql.SQLException;
 import java.util.List;
@@ -26,26 +28,25 @@ import javax.ws.rs.PathParam;
 public class AnuncioService {
     // "http://localhost:8080/TesteWS/rest/anuncio"
    @GET
-   public String listarAnuncio() throws SQLException
+   public String listarAnuncio()
    {
-//       AnuncioDAO dao = new AnuncioDAO();
-//       List<Anuncio> anuncios = dao.ListarAnuncios();
-//       
+       AnuncioDao dao = new AnuncioDao();
+       List<Anuncio> anuncios = dao.listarTodos();
+       
        Gson gson = new Gson();
        String json = "";
-//       json = gson.toJson(anuncios);
+       json = gson.toJson(anuncios);
        
        return json;
    } 
    
    // "http://localhost:8080/TesteWS/rest/anuncio"
    @POST
-   public String cadastrarAnuncio(String json) throws SQLException{
+   public String cadastrarAnuncio(String json) {
        Gson gson = new Gson();
        Anuncio a = gson.fromJson(json, Anuncio.class);
-//       System.out.println("Deu certo " + a.getTituloAnuncio());
-//       AnuncioDAO dao = new AnuncioDAO();
-//       dao.CadastrarAnuncio(a);
+       AnuncioDao dao = new AnuncioDao();
+       dao.inserir(a);
        
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
@@ -53,30 +54,26 @@ public class AnuncioService {
    
    // "http://localhost:8080/TesteWS/rest/anuncio"
    @PUT
-   public String editarAnuncio(String json) throws SQLException{
+   public String editarAnuncio(String json) {
        Gson gson = new Gson();
        Anuncio a = gson.fromJson(json, Anuncio.class);
        
-//       System.out.println("Deu certo " + a.getTituloAnuncio());
-//       AnuncioDAO dao = new AnuncioDAO();
-//       dao.EditarAnuncio(a);
-//       
+       AnuncioDao dao = new AnuncioDao();
+       dao.alterar(a);
+       
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
    }
    
    // "http://localhost:8080/TesteWS/rest/anuncio/{idAnuncio}"
    @DELETE
-   @Path("{idAnuncio}")
-   public String excluirAnuncio(@PathParam("idAnuncio") int idAnuncio) throws SQLException{
+   public String excluirAnuncio(String json) {
        Gson gson = new Gson();
-       //Anuncio a = gson.fromJson(json, Anuncio.class); 
-//       System.out.println("Service Anuncio Excluir " + idAnuncio);
-//       AnuncioDAO dao = new AnuncioDAO();
-//       dao.ExcluirAnuncio(idAnuncio);
-//       
-       String jsonSaida = gson.toJson(idAnuncio);
-       return jsonSaida;
+       Anuncio a = gson.fromJson(json, Anuncio.class); 
+       AnuncioDao dao = new AnuncioDao();
+       dao.excluir(a);
+       
+       return a.getTitulo() + " excluido!";
    }
    
    // "http://localhost:8080/TesteWS/rest/anuncio/{idUsuario}"
@@ -86,13 +83,9 @@ public class AnuncioService {
        
        Gson gson = new Gson();
        String json = null;
-//       try {
-//           AnuncioDAO dao = new AnuncioDAO();
-//           json = gson.toJson(dao.ListarPorUsuario(idUsuario));
-//       } catch (SQLException ex) {
-//           Logger.getLogger(AnuncioService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
-//       
+       AnuncioDao dao = new AnuncioDao();
+       json = gson.toJson(dao.pesquisarPorId(idUsuario));
+       
        return json;
    }
 }

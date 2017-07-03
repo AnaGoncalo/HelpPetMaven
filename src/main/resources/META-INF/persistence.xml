@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" 
-             xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="helppettads" transaction-type="RESOURCE_LOCAL">
-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    
-    <class>Modelo.Denuncia</class>
-    <class>Modelo.Permissao</class>
-    <class>Modelo.Usuario</class>
-    <class>Modelo.PessoaFisica</class>
-    <class>Modelo.PessoaJuridica</class>
-    <class>Modelo.Animal</class>
-    <class>Modelo.Encontro</class>
-    <class>Modelo.Evento</class>
-    <class>Modelo.Experiencia</class>
-    <class>Modelo.Estoque</class>
-    <class>Modelo.Anuncio</class>
-    
-    <properties>
-      <property name="javax.persistence.jdbc.url" value="ec2-107-20-226-93.compute-1.amazonaws.com"/>
-      <property name="javax.persistence.jdbc.user" value="fjvhbejxfckdtk"/>
-      <property name="javax.persistence.jdbc.driver" value="jdbc:postgresql://ec2-23-21-246-11.compute-1.amazonaws.com:5432/d4sd43prcqhvb8"/>
-      <property name="javax.persistence.jdbc.password" value="83b0231b808ef4c1dbb588e1e4b358766e51ceafe36a5b2ae25cd8024ca58691"/>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
-      
-      <property name="hibernate.hbm2ddl.auto" value="create"/>
-      <property name="hibernate.archive.autodetection" value="class"/>
-      <property name="hibernate.max_fetch_depth" value="3"/>
-      <property name="hibernate.show_sql" value="true"/>
-      <property name="hibernate.dialect"  value = "org.hibernate.dialect.MySQL5InnoDBDialect"/>
-    </properties>
-  </persistence-unit>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+	<persistence-unit name="helppettads">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<properties>
+			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.8.114.130/gerenciadorautoescola"/>-->
+			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1/helppettads"/> -->
+			<property name="javax.persistence.jdbc.url" value="postgres://fjvhbejxfckdtk:83b0231b808ef4c1dbb588e1e4b358766e51ceafe36a5b2ae25cd8024ca58691@ec2-107-20-226-93.compute-1.amazonaws.com:5432/d4sd43prcqhvb8"/> 
+			
+			<!-- <property name="javax.persistence.jdbc.user" value="adminIg9QcqQ" />  -->
+			<!-- <property name="javax.persistence.jdbc.user" value="root" /> -->
+			<property name="javax.persistence.jdbc.user" value="fjvhbejxfckdtk" />
+			
+			<!--<property name="javax.persistence.jdbc.password" value="Fimqzy5R1Y-I" /> -->
+			<!-- <property name="javax.persistence.jdbc.password" value="ananne" /> -->
+			<property name="javax.persistence.jdbc.password" value="83b0231b808ef4c1dbb588e1e4b358766e51ceafe36a5b2ae25cd8024ca58691" /> 
+			
+			<!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" /> -->
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+			
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		</properties>
+	</persistence-unit>
 </persistence>

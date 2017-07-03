@@ -35,13 +35,6 @@ import lombok.ToString;
  *
  * @author anne
  */
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode(exclude = {"id", "qtdAtual", "qtdIdeal"})
-@Builder
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 public class Estoque implements Serializable {
     
@@ -61,4 +54,57 @@ public class Estoque implements Serializable {
     
     @ManyToOne
     private PessoaJuridica ong;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getProduto() {
+		return produto;
+	}
+
+	public void setProduto(String produto) {
+		this.produto = produto;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public double getQtdAtual() {
+		return qtdAtual;
+	}
+
+	public void setQtdAtual(double qtdAtual) {
+		this.qtdAtual = qtdAtual;
+	}
+
+	public double getQtdIdeal() {
+		return qtdIdeal;
+	}
+
+	public void setQtdIdeal(double qtdIdeal) {
+		this.qtdIdeal = qtdIdeal;
+	}
+
+	public PessoaJuridica getOng() {
+		return ong;
+	}
+
+	public void setOng(PessoaJuridica ong) {
+		this.ong = ong;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+    
 }

@@ -39,13 +39,6 @@ import lombok.ToString;
  *
  * @author anne
  */
-@Getter
-@Setter
-@ToString(exclude = "editado")
-@EqualsAndHashCode(exclude = {"id", "editado", "status"})
-@Builder
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 public class Encontro implements Serializable {
     
@@ -73,5 +66,65 @@ public class Encontro implements Serializable {
     public boolean isEmpty() {
         return !(this.animal != null && this.adotante != null && this.localizacao != null && this.dataHorario != null);
     }
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getDataHorario() {
+		return dataHorario;
+	}
+
+	public void setDataHorario(Date dataHorario) {
+		this.dataHorario = dataHorario;
+	}
+
+	public String getLocalizacao() {
+		return localizacao;
+	}
+
+	public void setLocalizacao(String localizacao) {
+		this.localizacao = localizacao;
+	}
+
+	public boolean isEditado() {
+		return editado;
+	}
+
+	public void setEditado(boolean editado) {
+		this.editado = editado;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public Animal getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
+	}
+
+	public PessoaFisica getAdotante() {
+		return adotante;
+	}
+
+	public void setAdotante(PessoaFisica adotante) {
+		this.adotante = adotante;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 }

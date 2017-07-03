@@ -6,6 +6,8 @@
 package MyApplicationService;
 
 import Modelo.Experiencia;
+import Persistencia.ExperienciaDao;
+
 import com.google.gson.Gson;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,12 +29,12 @@ public class ExperienciaService {
    @GET
    public String listarExperiencias() throws SQLException
    {
-//       ExperienciaDAO dao = new ExperienciaDAO();
-//       List<Experiencia> experiencias = dao.ListarExperiencias();
+       ExperienciaDao dao = new ExperienciaDao();
+       List<Experiencia> experiencias = dao.listarTodos();
        
        Gson gson = new Gson();
        String json = "";
-//       json = gson.toJson(experiencias);
+       json = gson.toJson(experiencias);
        
        return json;
    } 
@@ -42,10 +44,8 @@ public class ExperienciaService {
    public String cadastrarExperiencia(String json) throws SQLException{
        Gson gson = new Gson();
        Experiencia a = gson.fromJson(json, Experiencia.class);
-       //a.setIdUsuario(1);
-//       System.out.println("Deu certo " + a.getTituloExperiencia());
-//       ExperienciaDAO dao = new ExperienciaDAO();
-//       dao.CadastrarExperiencia(a);
+       ExperienciaDao dao = new ExperienciaDao();
+       dao.inserir(a);
        
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
@@ -58,8 +58,8 @@ public class ExperienciaService {
        Gson gson = new Gson();
        Experiencia a = gson.fromJson(json, Experiencia.class);
        
-//       ExperienciaDAO dao = new ExperienciaDAO();
-//       dao.EditarExperiencia(a);
+       ExperienciaDao dao = new ExperienciaDao();
+       dao.alterar(a);
        
        String jsonSaida = gson.toJson(a);
        return jsonSaida;
@@ -67,15 +67,13 @@ public class ExperienciaService {
    
    // "http://localhost:8080/TesteWS/rest/experiencia/{idExperiencia}"
    @DELETE
-   @Path("{idExperiencia}")
-   public String excluirExperiencia(@PathParam("idExperiencia") int idExperiencia) throws SQLException{
+   public String excluirExperiencia(String json) throws SQLException{
        Gson gson = new Gson();
-       //Experiencia a = gson.fromJson(json, Experiencia.class);
-//       ExperienciaDAO dao = new ExperienciaDAO();
-//       dao.ExcluirExperiencia(idExperiencia);
+       Experiencia a = gson.fromJson(json, Experiencia.class);
+       ExperienciaDao dao = new ExperienciaDao();
+       dao.excluir(a);
        
-       String jsonSaida = gson.toJson(idExperiencia);
-       return jsonSaida;
+       return "ok";
    }
    
    // "http://localhost:8080/TesteWS/rest/experiencia/{idUsuario}"
@@ -85,12 +83,8 @@ public class ExperienciaService {
        
        Gson gson = new Gson();
        String json = null;
-//       try {
-//           ExperienciaDAO dao = new ExperienciaDAO();
-//           json = gson.toJson(dao.ListarPorUsuario(idUsuario));
-//       } catch (SQLException ex) {
-//           Logger.getLogger(ExperienciaService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
+       ExperienciaDao dao = new ExperienciaDao();
+       json = gson.toJson(dao.pesquisarPorId(idUsuario));
        
        return json;
    }

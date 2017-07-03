@@ -26,13 +26,6 @@ import lombok.ToString;
  *
  * @author anne
  */
-@Getter
-@Setter
-@ToString(exclude = {"foto", "cadastro"})
-@EqualsAndHashCode(exclude = {"id", "descricao", "foto", "cadastro", "localizacao"})
-@Builder
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 public class Animal implements Serializable {
     
@@ -65,7 +58,123 @@ public class Animal implements Serializable {
     
     private String localizacao;
     
-    @ManyToOne
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getEspecie() {
+		return especie;
+	}
+
+	public void setEspecie(String especie) {
+		this.especie = especie;
+	}
+
+	public String getRaca() {
+		return raca;
+	}
+
+	public void setRaca(String raca) {
+		this.raca = raca;
+	}
+
+	public String getIdade() {
+		return idade;
+	}
+
+	public void setIdade(String idade) {
+		this.idade = idade;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public Date getCadastro() {
+		return cadastro;
+	}
+
+	public void setCadastro(Date cadastro) {
+		this.cadastro = cadastro;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public String getLocalizacao() {
+		return localizacao;
+	}
+
+	public void setLocalizacao(String localizacao) {
+		this.localizacao = localizacao;
+	}
+
+	public Usuario getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(Usuario responsavel) {
+		this.responsavel = responsavel;
+	}
+
+	public Set<Encontro> getEncontros() {
+		return encontros;
+	}
+
+	public void setEncontros(Set<Encontro> encontros) {
+		this.encontros = encontros;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@ManyToOne
     private Usuario responsavel;
     
     @OneToMany(mappedBy = "animal")

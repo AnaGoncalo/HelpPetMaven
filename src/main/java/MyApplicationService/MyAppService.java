@@ -31,7 +31,9 @@ public class MyAppService {
     @GET
     public String Testar() {
     	List<Denuncia> denuncias = dao.listarTodos();
-        return "Oii sou um servico";
+    	Gson gson = new Gson();
+    	String json = gson.toJson(denuncias);
+        return json;
     }
     
     //http://localhost:8080/TesteWS/rest/myapp"
