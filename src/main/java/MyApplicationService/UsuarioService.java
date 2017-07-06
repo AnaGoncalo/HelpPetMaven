@@ -6,6 +6,8 @@
 package MyApplicationService;
 
 import Modelo.Usuario;
+import Persistencia.UsuarioDao;
+
 import com.google.gson.Gson;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -23,6 +25,8 @@ import javax.ws.rs.PathParam;
  */
 @Path("usuario")
 public class UsuarioService {
+	
+	UsuarioDao dao = new UsuarioDao();
     
    // "http://localhost:8080/TesteWS/rest/usuario"
    @POST
@@ -30,9 +34,7 @@ public class UsuarioService {
        Gson gson = new Gson();
        Usuario u = gson.fromJson(json, Usuario.class);
        
-//       System.out.println("Deu certo " + u.getNomeUsuario());
-//       UsuarioDAO dao = new UsuarioDAO();
-//       dao.inserir(u);
+       dao.AddUsuario(u);
        
        String jsonSaida = gson.toJson(u);
        return jsonSaida;    
@@ -44,11 +46,8 @@ public class UsuarioService {
        Gson gson = new Gson();
        Usuario u = gson.fromJson(json, Usuario.class);
        
-//       System.out.println("Deu certo " + u.getNomeUsuario());
-//       UsuarioDAO dao = new UsuarioDAO();
-//       dao.editar(u);
-//       u = dao.buscarById(u.getIdUsuario());
-//       System.out.println("e ai");
+       dao.AttUsuario(u);
+       
        String jsonSaida = gson.toJson(u);
        return jsonSaida;
    }

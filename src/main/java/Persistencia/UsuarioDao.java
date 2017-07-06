@@ -15,18 +15,35 @@ import java.util.List;
  * @author anne
  */
 public class UsuarioDao extends CrudDao<Usuario> {
+	
+	PessoaFisicaDao pfdao = new PessoaFisicaDao();
+	PessoaJuridicaDao pjdao = new PessoaJuridicaDao();
 
     public UsuarioDao() {
 	super(Usuario.class);
     }
     
     public boolean AddUsuario(Usuario usuario){
-    	PessoaFisicaDao pfdao = new PessoaFisicaDao();
-    	PessoaJuridicaDao pjdao = new PessoaJuridicaDao();
     	if(usuario.getPermissao().getNome().equals("Helper"))
     		return pfdao.inserir((PessoaFisica) usuario);
     	else
     		return pjdao.inserir((PessoaJuridica) usuario);
+    }
+    
+    public boolean AttUsuario(Usuario usuario){
+    	if(usuario.getPermissao().getNome().equals("Helper"))
+    		return pfdao.alterar((PessoaFisica) usuario);
+    	else
+    		return pjdao.alterar((PessoaJuridica) usuario);
+    	
+    }
+    
+    public boolean RemUsuario(Usuario usuario){
+    	if(usuario.getPermissao().getNome().equals("Helper"))
+    		return pfdao.excluir((PessoaFisica) usuario);
+    	else
+    		return pjdao.excluir((PessoaJuridica) usuario);
+
     }
 
     public Usuario Logar(Usuario usuario) {
