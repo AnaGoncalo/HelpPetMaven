@@ -18,24 +18,18 @@ package Modelo;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
  *
  * @author anne
  */
 @Entity
+@PrimaryKeyJoinColumn(name="idUsuario")
 public class PessoaJuridica extends Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     private String cnpj;
 
@@ -48,20 +42,11 @@ public class PessoaJuridica extends Usuario implements Serializable {
 	super();
     }
 
-    public PessoaJuridica(Long id, String cnpj, String funcionamento, Set<Estoque> estoques) {
-	super();
-	this.id = id;
+    public PessoaJuridica(String cnpj, String funcionamento, Set<Estoque> estoques, Long id, String nome, String email, String senha, String foto, String nascimento, String localizacao, String telefone, Permissao permissao, Set<Animal> animais, Set<Evento> eventos, Set<Anuncio> anuncios, Set<Experiencia> experiencias) {
+	super(id, nome, email, senha, foto, nascimento, localizacao, telefone, permissao, animais, eventos, anuncios, experiencias);
 	this.cnpj = cnpj;
 	this.funcionamento = funcionamento;
 	this.estoques = estoques;
-    }
-
-    public Long getId() {
-	return id;
-    }
-
-    public void setId(Long id) {
-	this.id = id;
     }
 
     public String getCnpj() {

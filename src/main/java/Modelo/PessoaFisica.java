@@ -18,23 +18,18 @@ package Modelo;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
  *
  * @author anne
  */
 @Entity
+@PrimaryKeyJoinColumn(name="idUsuario")
 public class PessoaFisica extends Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     private String cpf;
 
@@ -45,21 +40,12 @@ public class PessoaFisica extends Usuario implements Serializable {
 	super();
     }
 
-    public PessoaFisica(Long id, String cpf, Set<Encontro> encontros) {
-	super();
-	this.id = id;
+    public PessoaFisica(String cpf, Set<Encontro> encontros, Long id, String nome, String email, String senha, String foto, String nascimento, String localizacao, String telefone, Permissao permissao, Set<Animal> animais, Set<Evento> eventos, Set<Anuncio> anuncios, Set<Experiencia> experiencias) {
+	super(id, nome, email, senha, foto, nascimento, localizacao, telefone, permissao, animais, eventos, anuncios, experiencias);
 	this.cpf = cpf;
 	this.encontros = encontros;
     }
-
-    public Long getId() {
-	return id;
-    }
-
-    public void setId(Long id) {
-	this.id = id;
-    }
-
+    
     public String getCpf() {
 	return cpf;
     }

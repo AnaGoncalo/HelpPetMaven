@@ -5,6 +5,7 @@
  */
 package MyApplicationService;
 
+import Modelo.PessoaFisica;
 import Modelo.Usuario;
 import com.google.gson.Gson;
 import java.sql.SQLException;
@@ -29,6 +30,7 @@ public class UsuarioService {
    public String cadastrarUsuario(String json) throws SQLException{
        Gson gson = new Gson();
        Usuario u = gson.fromJson(json, Usuario.class);
+       
        
 //       System.out.println("Deu certo " + u.getNomeUsuario());
 //       UsuarioDAO dao = new UsuarioDAO();
