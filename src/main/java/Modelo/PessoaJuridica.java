@@ -39,9 +39,9 @@ public class PessoaJuridica extends Usuario implements Serializable {
     private Set<Estoque> estoques;
 
     public PessoaJuridica() {
-	super();
+    	super();
     }
-
+    
     public PessoaJuridica(String cnpj, String funcionamento, Set<Estoque> estoques, Long id, String nome, String email, String senha, String foto, String nascimento, String localizacao, String telefone, Permissao permissao, Set<Animal> animais, Set<Evento> eventos, Set<Anuncio> anuncios, Set<Experiencia> experiencias) {
 	super(id, nome, email, senha, foto, nascimento, localizacao, telefone, permissao, animais, eventos, anuncios, experiencias);
 	this.cnpj = cnpj;
