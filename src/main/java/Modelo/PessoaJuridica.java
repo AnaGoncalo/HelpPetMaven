@@ -33,10 +33,6 @@ public class PessoaJuridica extends Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String cnpj;
 
     private String funcionamento;
@@ -45,23 +41,14 @@ public class PessoaJuridica extends Usuario implements Serializable {
     private Set<Estoque> estoques;
 
     public PessoaJuridica() {
-	super();
+    	super();
     }
 
-    public PessoaJuridica(Long id, String cnpj, String funcionamento, Set<Estoque> estoques) {
+    public PessoaJuridica(String cnpj, String funcionamento, Set<Estoque> estoques) {
 	super();
-	this.id = id;
 	this.cnpj = cnpj;
 	this.funcionamento = funcionamento;
 	this.estoques = estoques;
-    }
-
-    public Long getId() {
-	return id;
-    }
-
-    public void setId(Long id) {
-	this.id = id;
     }
 
     public String getCnpj() {

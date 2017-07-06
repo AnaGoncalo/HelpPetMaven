@@ -55,16 +55,14 @@ public class UsuarioService {
    
    // "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}"
    @DELETE
-   @Path("{idUsuario}")
-   public String excluirUsuario(@PathParam("idUsuario") int idUsuario) throws SQLException{
+   public String excluirUsuario(String json) throws SQLException{
        Gson gson = new Gson();
-       //Usuario u = gson.fromJson(json, Usuario.class);
+       Usuario u = gson.fromJson(json, Usuario.class);
        
 //       System.out.println("Deu certo " + idUsuario);
 //       UsuarioDAO dao = new UsuarioDAO();
 //       dao.excluir(idUsuario);
-       
-       String jsonSaida = gson.toJson(idUsuario);
+       String jsonSaida = u.getNome() + " excluido";
        return jsonSaida;
    }
     

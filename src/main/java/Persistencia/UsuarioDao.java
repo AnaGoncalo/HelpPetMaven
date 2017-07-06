@@ -5,6 +5,8 @@
  */
 package Persistencia;
 
+import Modelo.PessoaFisica;
+import Modelo.PessoaJuridica;
 import Modelo.Usuario;
 import java.util.List;
 
@@ -16,6 +18,15 @@ public class UsuarioDao extends CrudDao<Usuario> {
 
     public UsuarioDao() {
 	super(Usuario.class);
+    }
+    
+    public boolean AddUsuario(Usuario usuario){
+    	PessoaFisicaDao pfdao = new PessoaFisicaDao();
+    	PessoaJuridicaDao pjdao = new PessoaJuridicaDao();
+    	if(usuario.getPermissao().getNome().equals("Helper"))
+    		return pfdao.inserir((PessoaFisica) usuario);
+    	else
+    		return pjdao.inserir((PessoaJuridica) usuario);
     }
 
     public Usuario Logar(Usuario usuario) {

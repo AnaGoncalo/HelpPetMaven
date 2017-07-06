@@ -32,32 +32,19 @@ public class PessoaFisica extends Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String cpf;
 
     @OneToMany(mappedBy = "adotante")
     private Set<Encontro> encontros;
 
     public PessoaFisica() {
-	super();
+    	super();
     }
 
-    public PessoaFisica(Long id, String cpf, Set<Encontro> encontros) {
+    public PessoaFisica(String cpf, Set<Encontro> encontros) {
 	super();
-	this.id = id;
 	this.cpf = cpf;
 	this.encontros = encontros;
-    }
-
-    public Long getId() {
-	return id;
-    }
-
-    public void setId(Long id) {
-	this.id = id;
     }
 
     public String getCpf() {
