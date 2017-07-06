@@ -22,86 +22,62 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  *
  * @author anne
  */
 @Entity
-public class PessoaFisica implements Serializable {
-    
+public class PessoaFisica extends Usuario implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String cpf;
-    
-    @OneToOne
-    private Usuario usuario;
-    
+
     @OneToMany(mappedBy = "adotante")
     private Set<Encontro> encontros;
 
-	public PessoaFisica() {
-		super();
-	}
+    public PessoaFisica() {
+	super();
+    }
 
-	public PessoaFisica(Long id, String cpf, Usuario usuario, Set<Encontro> encontros) {
-		super();
-		this.id = id;
-		this.cpf = cpf;
-		this.usuario = usuario;
-		this.encontros = encontros;
-	}
+    public PessoaFisica(Long id, String cpf, Set<Encontro> encontros) {
+	super();
+	this.id = id;
+	this.cpf = cpf;
+	this.encontros = encontros;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public String getCpf() {
-		return cpf;
-	}
+    public String getCpf() {
+	return cpf;
+    }
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
+    public void setCpf(String cpf) {
+	this.cpf = cpf;
+    }
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
+    public Set<Encontro> getEncontros() {
+	return encontros;
+    }
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+    public void setEncontros(Set<Encontro> encontros) {
+	this.encontros = encontros;
+    }
 
-	public Set<Encontro> getEncontros() {
-		return encontros;
-	}
+    public static long getSerialversionuid() {
+	return serialVersionUID;
+    }
 
-	public void setEncontros(Set<Encontro> encontros) {
-		this.encontros = encontros;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-    
-    
-    
 }

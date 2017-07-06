@@ -21,98 +21,75 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  *
  * @author anne
  */
 @Entity
-public class PessoaJuridica implements Serializable {
-    
+public class PessoaJuridica extends Usuario implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String cnpj;
-    
+
     private String funcionamento;
-    
-    @OneToOne
-    private Usuario usuario;
-    
+
     @OneToMany(mappedBy = "ong")
     private Set<Estoque> estoques;
 
-	public PessoaJuridica() {
-		super();
-	}
+    public PessoaJuridica() {
+	super();
+    }
 
-	public PessoaJuridica(Long id, String cnpj, String funcionamento, Usuario usuario, Set<Estoque> estoques) {
-		super();
-		this.id = id;
-		this.cnpj = cnpj;
-		this.funcionamento = funcionamento;
-		this.usuario = usuario;
-		this.estoques = estoques;
-	}
+    public PessoaJuridica(Long id, String cnpj, String funcionamento, Set<Estoque> estoques) {
+	super();
+	this.id = id;
+	this.cnpj = cnpj;
+	this.funcionamento = funcionamento;
+	this.estoques = estoques;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public String getCnpj() {
-		return cnpj;
-	}
+    public String getCnpj() {
+	return cnpj;
+    }
 
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
+    public void setCnpj(String cnpj) {
+	this.cnpj = cnpj;
+    }
 
-	public String getFuncionamento() {
-		return funcionamento;
-	}
+    public String getFuncionamento() {
+	return funcionamento;
+    }
 
-	public void setFuncionamento(String funcionamento) {
-		this.funcionamento = funcionamento;
-	}
+    public void setFuncionamento(String funcionamento) {
+	this.funcionamento = funcionamento;
+    }
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
+    public Set<Estoque> getEstoques() {
+	return estoques;
+    }
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+    public void setEstoques(Set<Estoque> estoques) {
+	this.estoques = estoques;
+    }
 
-	public Set<Estoque> getEstoques() {
-		return estoques;
-	}
+    public static long getSerialversionuid() {
+	return serialVersionUID;
+    }
 
-	public void setEstoques(Set<Estoque> estoques) {
-		this.estoques = estoques;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-    
-    
 }
