@@ -6,6 +6,7 @@
 package Persistencia;
 
 import Modelo.Evento;
+import java.util.List;
 
 /**
  *
@@ -17,4 +18,13 @@ public class EventoDao extends CrudDao<Evento>{
 	super(Evento.class);
     }
     
+    public List<Evento> listarPorUsuario(Long id) {
+	List<Evento> lista = listarTodos();
+	for(Evento a : lista){
+	    if(a.getResponsavel().getId() != id){
+		lista.remove(a);
+	    }
+	}
+	return lista;
+    }
 }

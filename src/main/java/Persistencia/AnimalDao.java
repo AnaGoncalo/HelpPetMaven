@@ -17,32 +17,30 @@ import util.JpaUtil;
  *
  * @author anne
  */
-public class AnimalDao extends CrudDao<Animal>{
-    
+public class AnimalDao extends CrudDao<Animal> {
+
     public AnimalDao() {
 	super(Animal.class);
     }
-    
+
     public List<Animal> listarNaoAdotados() {
-    	
-        List<Animal> lista = listarTodos(); 
-        for(Animal a: lista){
-        	if(a.isStatus())
-        		lista.remove(a);
-        }
-        return lista;
+	List<Animal> lista = listarTodos();
+	for (Animal a : lista) {
+	    if (a.isStatus()) {
+		lista.remove(a);
+	    }
+	}
+	return lista;
     }
-    
+
     public List<Animal> listarPorUsuario(Long idUsuario) {
-    	EntityManager em = JpaUtil.getEntityManager();
-        javax.persistence.criteria.CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-        cq.select(cq.from(Animal.class));
-        List<Animal> lista = em.createQuery(cq).getResultList(); 
-        for(Animal a: lista){
-        	if(a.getResponsavel().getId() != idUsuario)
-        		lista.remove(a);
-        }
-        return lista;
+	List<Animal> lista = listarTodos();
+	for (Animal a : lista) {
+	    if (a.getResponsavel().getId() != idUsuario) {
+		lista.remove(a);
+	    }
+	}
+	return lista;
     }
-    
+
 }

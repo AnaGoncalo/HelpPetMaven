@@ -6,6 +6,7 @@
 package Persistencia;
 
 import Modelo.Estoque;
+import java.util.List;
 
 /**
  *
@@ -17,4 +18,13 @@ public class EstoqueDao extends CrudDao<Estoque>{
 	super(Estoque.class);
     }
     
+    public List<Estoque> listarPorUsuario(Long id) {
+	List<Estoque> lista = listarTodos();
+	for(Estoque a : lista){
+	    if(a.getOng().getId() != id){
+		lista.remove(a);
+	    }
+	}
+	return lista;
+    }
 }

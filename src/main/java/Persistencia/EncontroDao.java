@@ -6,6 +6,7 @@
 package Persistencia;
 
 import Modelo.Encontro;
+import java.util.List;
 
 /**
  *
@@ -15,6 +16,16 @@ public class EncontroDao extends CrudDao<Encontro>{
     
     public EncontroDao() {
 	super(Encontro.class);
+    }
+    
+    public List<Encontro> listarPorUsuario(Long id) {
+	List<Encontro> lista = listarTodos();
+	for(Encontro a : lista){
+	    if(a.getAnimal().getResponsavel().getId() != id || a.getAdotante().getId() != id){
+		lista.remove(a);
+	    }
+	}
+	return lista;
     }
     
 }

@@ -6,6 +6,7 @@
 package Persistencia;
 
 import Modelo.Experiencia;
+import java.util.List;
 
 /**
  *
@@ -15,6 +16,16 @@ public class ExperienciaDao extends CrudDao<Experiencia>{
     
     public ExperienciaDao() {
 	super(Experiencia.class);
+    }
+    
+    public List<Experiencia> listarPorUsuario(Long id) {
+	List<Experiencia> lista = listarTodos();
+	for(Experiencia a : lista){
+	    if(a.getUsuario().getId() != id){
+		lista.remove(a);
+	    }
+	}
+	return lista;
     }
     
 }

@@ -6,6 +6,7 @@
 package Persistencia;
 
 import Modelo.Anuncio;
+import java.util.List;
 
 /**
  *
@@ -15,6 +16,16 @@ public class AnuncioDao extends CrudDao<Anuncio>{
     
     public AnuncioDao() {
 	super(Anuncio.class);
+    }
+    
+    public List<Anuncio> listarPorUsuario(Long id) {
+	List<Anuncio> lista = listarTodos();
+	for(Anuncio a : lista){
+	    if(a.getResponsavel().getId() != id){
+		lista.remove(a);
+	    }
+	}
+	return lista;
     }
     
 }
