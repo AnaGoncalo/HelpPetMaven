@@ -34,10 +34,13 @@ public class AnuncioService {
        List<Anuncio> anuncios = dao.listarTodos();
        
        Gson gson = new Gson();
-       String json = "";
+       String json = "ok";
+       for(Anuncio a: anuncios){
+    	   System.out.println("Anuncios " + a.getId() + " " + a.getTitulo() + " " + a.getResponsavel().getNome());
+       }
        json = gson.toJson(anuncios);
        
-       return json;
+       return "ok";
    } 
    
    // "http://localhost:8080/TesteWS/rest/anuncio"

@@ -35,11 +35,11 @@ public class UsuarioDao extends CrudDao<Usuario> {
     		pf.setTelefone(usuario.getTelefone());
     		pf.setPermissao(usuario.getPermissao());
     		pf.setCpf(null);
-    		pf.setAnimais(null);
-    		pf.setAnuncios(null);
-    		pf.setEncontros(null);
-    		pf.setEventos(null);
-    		pf.setExperiencias(null);
+//    		pf.setAnimais(null);
+//    		pf.setAnuncios(null);
+//    		pf.setEncontros(null);
+//    		pf.setEventos(null);
+//    		pf.setExperiencias(null);
     		return pfdao.inserir(pf);
     	}
     	else{
@@ -54,11 +54,11 @@ public class UsuarioDao extends CrudDao<Usuario> {
     		pj.setPermissao(usuario.getPermissao());
     		pj.setCnpj(null);
     		pj.setFuncionamento(null);
-    		pj.setEstoques(null);
-    		pj.setAnimais(null);
-    		pj.setAnuncios(null);
-    		pj.setEventos(null);
-    		pj.setExperiencias(null);
+//    		pj.setEstoques(null);
+//    		pj.setAnimais(null);
+//    		pj.setAnuncios(null);
+//    		pj.setEventos(null);
+//    		pj.setExperiencias(null);
     		return pjdao.inserir(pj);
     	}
     }

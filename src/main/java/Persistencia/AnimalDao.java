@@ -24,10 +24,8 @@ public class AnimalDao extends CrudDao<Animal>{
     }
     
     public List<Animal> listarNaoAdotados() {
-    	EntityManager em = JpaUtil.getEntityManager();
-        javax.persistence.criteria.CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-        cq.select(cq.from(Animal.class));
-        List<Animal> lista = em.createQuery(cq).getResultList(); 
+    	
+        List<Animal> lista = listarTodos(); 
         for(Animal a: lista){
         	if(a.isStatus())
         		lista.remove(a);

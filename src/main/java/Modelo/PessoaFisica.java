@@ -33,33 +33,21 @@ public class PessoaFisica extends Usuario implements Serializable {
 
     private String cpf;
 
-    @OneToMany(mappedBy = "adotante")
-    private Set<Encontro> encontros;
-
     public PessoaFisica() {
     	super();
     }
-
-    public PessoaFisica(String cpf, Set<Encontro> encontros, Long id, String nome, String email, String senha, String foto, String nascimento, String localizacao, String telefone, Permissao permissao, Set<Animal> animais, Set<Evento> eventos, Set<Anuncio> anuncios, Set<Experiencia> experiencias) {
-	super(id, nome, email, senha, foto, nascimento, localizacao, telefone, permissao, animais, eventos, anuncios, experiencias);
-	this.cpf = cpf;
-	this.encontros = encontros;
-    }
     
+    public PessoaFisica(String cpf) {
+		super();
+		this.cpf = cpf;
+	}
+
     public String getCpf() {
-	return cpf;
+    	return cpf;
     }
 
     public void setCpf(String cpf) {
 	this.cpf = cpf;
-    }
-
-    public Set<Encontro> getEncontros() {
-	return encontros;
-    }
-
-    public void setEncontros(Set<Encontro> encontros) {
-	this.encontros = encontros;
     }
 
     public static long getSerialversionuid() {

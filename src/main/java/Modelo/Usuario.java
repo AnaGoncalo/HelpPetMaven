@@ -43,25 +43,12 @@ public class Usuario implements Serializable {
     @ManyToOne
     private Permissao permissao;
     
-    @OneToMany(mappedBy = "responsavel")
-    private Set<Animal> animais;
-    
-    @OneToMany(mappedBy = "responsavel")
-    private Set<Evento> eventos;
-    
-    @OneToMany(mappedBy = "responsavel")
-    private Set<Anuncio> anuncios;
-    
-    @OneToMany(mappedBy = "usuario")
-    private Set<Experiencia> experiencias;
-
 	public Usuario() {
 		super();
 	}
-
+	
 	public Usuario(Long id, String nome, String email, String senha, String foto, String nascimento, String localizacao,
-			String telefone, Permissao permissao, Set<Animal> animais, Set<Evento> eventos, Set<Anuncio> anuncios,
-			Set<Experiencia> experiencias) {
+			String telefone, Permissao permissao) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -72,10 +59,6 @@ public class Usuario implements Serializable {
 		this.localizacao = localizacao;
 		this.telefone = telefone;
 		this.permissao = permissao;
-		this.animais = animais;
-		this.eventos = eventos;
-		this.anuncios = anuncios;
-		this.experiencias = experiencias;
 	}
 
 	public Long getId() {
@@ -148,38 +131,6 @@ public class Usuario implements Serializable {
 
 	public void setPermissao(Permissao permissao) {
 		this.permissao = permissao;
-	}
-
-	public Set<Animal> getAnimais() {
-		return animais;
-	}
-
-	public void setAnimais(Set<Animal> animais) {
-		this.animais = animais;
-	}
-
-	public Set<Evento> getEventos() {
-		return eventos;
-	}
-
-	public void setEventos(Set<Evento> eventos) {
-		this.eventos = eventos;
-	}
-
-	public Set<Anuncio> getAnuncios() {
-		return anuncios;
-	}
-
-	public void setAnuncios(Set<Anuncio> anuncios) {
-		this.anuncios = anuncios;
-	}
-
-	public Set<Experiencia> getExperiencias() {
-		return experiencias;
-	}
-
-	public void setExperiencias(Set<Experiencia> experiencias) {
-		this.experiencias = experiencias;
 	}
 
 	public static long getSerialversionuid() {

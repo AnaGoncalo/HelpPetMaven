@@ -37,7 +37,7 @@ public class AnimalService {
    public String listar()
    {
        List<Animal> animais = null;
-       animais = dao.listarTodos();
+       animais = dao.listarNaoAdotados();
        
        Gson gson = new Gson();
        String json = gson.toJson(animais);

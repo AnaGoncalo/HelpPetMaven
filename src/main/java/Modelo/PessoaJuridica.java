@@ -35,21 +35,17 @@ public class PessoaJuridica extends Usuario implements Serializable {
 
     private String funcionamento;
 
-    @OneToMany(mappedBy = "ong")
-    private Set<Estoque> estoques;
-
     public PessoaJuridica() {
     	super();
-    }
+    }    
     
-    public PessoaJuridica(String cnpj, String funcionamento, Set<Estoque> estoques, Long id, String nome, String email, String senha, String foto, String nascimento, String localizacao, String telefone, Permissao permissao, Set<Animal> animais, Set<Evento> eventos, Set<Anuncio> anuncios, Set<Experiencia> experiencias) {
-	super(id, nome, email, senha, foto, nascimento, localizacao, telefone, permissao, animais, eventos, anuncios, experiencias);
-	this.cnpj = cnpj;
-	this.funcionamento = funcionamento;
-	this.estoques = estoques;
-    }
+    public PessoaJuridica(String cnpj, String funcionamento) {
+		super();
+		this.cnpj = cnpj;
+		this.funcionamento = funcionamento;
+	}
 
-    public String getCnpj() {
+	public String getCnpj() {
 	return cnpj;
     }
 
@@ -63,14 +59,6 @@ public class PessoaJuridica extends Usuario implements Serializable {
 
     public void setFuncionamento(String funcionamento) {
 	this.funcionamento = funcionamento;
-    }
-
-    public Set<Estoque> getEstoques() {
-	return estoques;
-    }
-
-    public void setEstoques(Set<Estoque> estoques) {
-	this.estoques = estoques;
     }
 
     public static long getSerialversionuid() {
