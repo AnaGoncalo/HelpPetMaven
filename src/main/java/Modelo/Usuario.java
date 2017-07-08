@@ -127,6 +127,30 @@ public class Usuario implements Serializable {
 	this.telefone = telefone;
     }
 
+    public String getCpf_cnpj() {
+	return cpf_cnpj;
+    }
+
+    public void setCpf_cnpj(String cpf_cnpj) {
+	this.cpf_cnpj = cpf_cnpj;
+    }
+
+    public String getFuncionamento() {
+	return funcionamento;
+    }
+
+    public void setFuncionamento(String funcionamento) {
+	this.funcionamento = funcionamento;
+    }
+
+    public String getDescricao() {
+	return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+	this.descricao = descricao;
+    }
+
     public Permissao getPermissao() {
 	return permissao;
     }

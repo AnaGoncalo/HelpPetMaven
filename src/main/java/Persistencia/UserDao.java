@@ -1,11 +1,11 @@
 package Persistencia;
 
-import Modelo.User;
+import Modelo.UserTeste;
 
-public class UserDao extends CrudDao<User>{
+public class UserDao extends CrudDao<UserTeste>{
 
 	public UserDao() {
-		super(User.class);
+		super(UserTeste.class);
 	}
 
 }
