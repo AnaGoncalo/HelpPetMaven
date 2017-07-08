@@ -21,15 +21,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  *
@@ -37,88 +28,87 @@ import lombok.ToString;
  */
 @Entity
 public class Estoque implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String produto;
-    
+
     private String tipo;
-        
+
     private double qtdAtual;
-    
+
     private double qtdIdeal;
-    
+
     @ManyToOne
-    private PessoaJuridica ong;
-    
-	public Estoque() {
-		super();
-	}
+    private Usuario ong;
 
-	public Estoque(Long id, String produto, String tipo, double qtdAtual, double qtdIdeal, PessoaJuridica ong) {
-		super();
-		this.id = id;
-		this.produto = produto;
-		this.tipo = tipo;
-		this.qtdAtual = qtdAtual;
-		this.qtdIdeal = qtdIdeal;
-		this.ong = ong;
-	}
+    public Estoque() {
+	super();
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Estoque(Long id, String produto, String tipo, double qtdAtual, double qtdIdeal, Usuario ong) {
+	this.id = id;
+	this.produto = produto;
+	this.tipo = tipo;
+	this.qtdAtual = qtdAtual;
+	this.qtdIdeal = qtdIdeal;
+	this.ong = ong;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public String getProduto() {
-		return produto;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public void setProduto(String produto) {
-		this.produto = produto;
-	}
+    public String getProduto() {
+	return produto;
+    }
 
-	public String getTipo() {
-		return tipo;
-	}
+    public void setProduto(String produto) {
+	this.produto = produto;
+    }
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+    public String getTipo() {
+	return tipo;
+    }
 
-	public double getQtdAtual() {
-		return qtdAtual;
-	}
+    public void setTipo(String tipo) {
+	this.tipo = tipo;
+    }
 
-	public void setQtdAtual(double qtdAtual) {
-		this.qtdAtual = qtdAtual;
-	}
+    public double getQtdAtual() {
+	return qtdAtual;
+    }
 
-	public double getQtdIdeal() {
-		return qtdIdeal;
-	}
+    public void setQtdAtual(double qtdAtual) {
+	this.qtdAtual = qtdAtual;
+    }
 
-	public void setQtdIdeal(double qtdIdeal) {
-		this.qtdIdeal = qtdIdeal;
-	}
+    public double getQtdIdeal() {
+	return qtdIdeal;
+    }
 
-	public PessoaJuridica getOng() {
-		return ong;
-	}
+    public void setQtdIdeal(double qtdIdeal) {
+	this.qtdIdeal = qtdIdeal;
+    }
 
-	public void setOng(PessoaJuridica ong) {
-		this.ong = ong;
-	}
+    public Usuario getOng() {
+	return ong;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-    
+    public void setOng(Usuario ong) {
+	this.ong = ong;
+    }
+
+    public static long getSerialversionuid() {
+	return serialVersionUID;
+    }
+
 }

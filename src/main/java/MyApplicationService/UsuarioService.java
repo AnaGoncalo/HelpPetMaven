@@ -5,17 +5,10 @@
  */
 package MyApplicationService;
 
-import Modelo.PessoaFisica;
-import Modelo.PessoaJuridica;
 import Modelo.Usuario;
-import Persistencia.PessoaFisicaDao;
-import Persistencia.PessoaJuridicaDao;
 import Persistencia.UsuarioDao;
-
 import com.google.gson.Gson;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.DELETE;
@@ -29,63 +22,53 @@ import javax.ws.rs.PathParam;
  */
 @Path("usuario")
 public class UsuarioService {
-	
-	UsuarioDao dao = new UsuarioDao();
-	PessoaFisicaDao pfdao = new PessoaFisicaDao();
-	PessoaJuridicaDao pjdao = new PessoaJuridicaDao();
-    
-   // "http://localhost:8080/TesteWS/rest/usuario"
-   @POST
-   public String cadastrarUsuario(String json) throws SQLException{
-       Gson gson = new Gson();
-       Usuario u = gson.fromJson(json, Usuario.class);
-       
-       dao.AddUsuario(u);
-       
-       String jsonSaida = gson.toJson(u);
-       return jsonSaida;    
-   }
-   
-   // "http://localhost:8080/TesteWS/rest/usuario"
-   @PUT
-   public String editarUsuario(String json) throws SQLException{
-       Gson gson = new Gson();
-       Usuario u = gson.fromJson(json, Usuario.class);
-       PessoaFisica pf;
-       PessoaJuridica pj;
-       if(u.getPermissao().equals("Helper")){
-    	   pf = gson.fromJson(json, PessoaFisica.class);
-    	   pfdao.alterar(pf);
-       }
-       else{
-    	   pj = gson.fromJson(json, PessoaJuridica.class);
-    	   pjdao.alterar(pj);
-       }
-       
-       String jsonSaida = gson.toJson(u);
-       return jsonSaida;
-   }
-   
-   // "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}"
-   @DELETE
-   public String excluirUsuario(String json) throws SQLException{
-       Gson gson = new Gson();
-       Usuario u = gson.fromJson(json, Usuario.class);
-       
+
+    UsuarioDao dao = new UsuarioDao();
+
+    // "http://localhost:8080/TesteWS/rest/usuario"
+    @POST
+    public String cadastrarUsuario(String json) throws SQLException {
+	Gson gson = new Gson();
+	Usuario u = gson.fromJson(json, Usuario.class);
+
+	dao.inserir(u);
+
+	String jsonSaida = gson.toJson(u);
+	return jsonSaida;
+    }
+
+    // "http://localhost:8080/TesteWS/rest/usuario"
+    @PUT
+    public String editarUsuario(String json) throws SQLException {
+	Gson gson = new Gson();
+	Usuario u = gson.fromJson(json, Usuario.class);
+
+	dao.alterar(u);
+
+	String jsonSaida = gson.toJson(u);
+	return jsonSaida;
+    }
+
+    // "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}"
+    @DELETE
+    public String excluirUsuario(String json) throws SQLException {
+	Gson gson = new Gson();
+	Usuario u = gson.fromJson(json, Usuario.class);
+
 //       System.out.println("Deu certo " + idUsuario);
 //       UsuarioDAO dao = new UsuarioDAO();
 //       dao.excluir(idUsuario);
-       String jsonSaida = u.getNome() + " excluido";
-       return jsonSaida;
-   }
-    
-   // "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}"
-   @GET
-   @Path("{idUsuario}")
-   public String listarPorUsuario(@PathParam("idUsuario") int idUsuario){
-       
-       Gson gson = new Gson();
-       String json = null;
+	String jsonSaida = u.getNome() + " excluido";
+	return jsonSaida;
+    }
+
+    // "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}"
+    @GET
+    @Path("{idUsuario}")
+    public String listarPorUsuario(@PathParam("idUsuario") int idUsuario) {
+
+	Gson gson = new Gson();
+	String json = null;
 //       try {
 //           UsuarioDAO dao = new UsuarioDAO();
 //           json = gson.toJson(dao.buscarById(idUsuario));
@@ -95,7 +78,7 @@ public class UsuarioService {
 //       } catch (SQLException ex) {
 //           Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
 //       }
-       
-       return json;
-   }
+
+	return json;
+    }
 }

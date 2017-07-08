@@ -21,7 +21,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 
 /**
  *
@@ -29,88 +28,88 @@ import javax.persistence.SequenceGenerator;
  */
 @Entity
 public class Anuncio implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String titulo;
-    
+
     private String tipo;
-    
+
     private String descricao;
-    
+
     private String foto;
-    
+
     @ManyToOne
     private Usuario responsavel;
 
-	public Anuncio() {
-		super();
-	}
+    public Anuncio() {
+	super();
+    }
 
-	public Anuncio(Long id, String titulo, String tipo, String descricao, String foto, Usuario responsavel) {
-		super();
-		this.id = id;
-		this.titulo = titulo;
-		this.tipo = tipo;
-		this.descricao = descricao;
-		this.foto = foto;
-		this.responsavel = responsavel;
-	}
+    public Anuncio(Long id, String titulo, String tipo, String descricao, String foto, Usuario responsavel) {
+	super();
+	this.id = id;
+	this.titulo = titulo;
+	this.tipo = tipo;
+	this.descricao = descricao;
+	this.foto = foto;
+	this.responsavel = responsavel;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public String getTitulo() {
-		return titulo;
-	}
+    public String getTitulo() {
+	return titulo;
+    }
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+    public void setTitulo(String titulo) {
+	this.titulo = titulo;
+    }
 
-	public String getTipo() {
-		return tipo;
-	}
+    public String getTipo() {
+	return tipo;
+    }
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+    public void setTipo(String tipo) {
+	this.tipo = tipo;
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public String getDescricao() {
+	return descricao;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public void setDescricao(String descricao) {
+	this.descricao = descricao;
+    }
 
-	public String getFoto() {
-		return foto;
-	}
+    public String getFoto() {
+	return foto;
+    }
 
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
+    public void setFoto(String foto) {
+	this.foto = foto;
+    }
 
-	public Usuario getResponsavel() {
-		return responsavel;
-	}
+    public Usuario getResponsavel() {
+	return responsavel;
+    }
 
-	public void setResponsavel(Usuario responsavel) {
-		this.responsavel = responsavel;
-	}
+    public void setResponsavel(Usuario responsavel) {
+	this.responsavel = responsavel;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public static long getSerialversionuid() {
+	return serialVersionUID;
+    }
 
 }

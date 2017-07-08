@@ -5,17 +5,10 @@
  */
 package MyApplicationService;
 
-
+import Persistencia.UsuarioDao;
 import com.google.gson.Gson;
-
-import Persistencia.PessoaJuridicaDao;
-
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 
 /**
  *
@@ -23,16 +16,16 @@ import javax.ws.rs.PathParam;
  */
 @Path("clinicas")
 public class ClinicaService {
-    
+
     // "http://localhost:8080/TesteWS/rest/clinicas"
-   @GET
-   public String listarPJs(){
-       
-	   Gson gson = new Gson();
-       String json = null;
-       PessoaJuridicaDao dao = new PessoaJuridicaDao();
-       json = gson.toJson(dao.listarTodos());
-       
-       return json;
-   }
+    @GET
+    public String listarPJs() {
+
+	Gson gson = new Gson();
+	String json = null;
+	UsuarioDao dao = new UsuarioDao();
+	json = gson.toJson(dao.GetClinicasPetshops());
+
+	return json;
+    }
 }

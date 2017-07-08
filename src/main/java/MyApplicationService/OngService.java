@@ -5,16 +5,10 @@
  */
 package MyApplicationService;
 
+import Persistencia.UsuarioDao;
 import com.google.gson.Gson;
-
-import Persistencia.PessoaJuridicaDao;
-
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 
 /**
  *
@@ -22,17 +16,17 @@ import javax.ws.rs.PathParam;
  */
 @Path("ongs")
 public class OngService {
-    
-	PessoaJuridicaDao dao = new PessoaJuridicaDao();
-	
+
+    UsuarioDao dao = new UsuarioDao();
+
     // "http://localhost:8080/TesteWS/rest/ongs"
-   @GET
-   public String listarONGs(){
-       
-       Gson gson = new Gson();
-       String json = null;
-       json = gson.toJson(dao.listarOngs());
-       
-       return json;
-   }
+    @GET
+    public String listarONGs() {
+
+	Gson gson = new Gson();
+	String json = null;
+	json = gson.toJson(dao.GetOngs());
+
+	return json;
+    }
 }

@@ -23,17 +23,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
-
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  *
@@ -41,106 +31,104 @@ import lombok.ToString;
  */
 @Entity
 public class Encontro implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataHorario;
-    
+
     private String localizacao;
-   
+
     private boolean editado;
-    
+
     private boolean status;
-    
+
     @ManyToOne
     private Animal animal;
-    
+
     @ManyToOne
-    private PessoaFisica adotante;
+    private Usuario adotante;
 
     public Encontro() {
-		super();
-	}
-
-	public Encontro(Long id, Date dataHorario, String localizacao, boolean editado, boolean status, Animal animal,
-			PessoaFisica adotante) {
-		super();
-		this.id = id;
-		this.dataHorario = dataHorario;
-		this.localizacao = localizacao;
-		this.editado = editado;
-		this.status = status;
-		this.animal = animal;
-		this.adotante = adotante;
-	}
-
-	public boolean isEmpty() {
-        return !(this.animal != null && this.adotante != null && this.localizacao != null && this.dataHorario != null);
+	super();
     }
 
-	public Long getId() {
-		return id;
-	}
+    public Encontro(Long id, Date dataHorario, String localizacao, boolean editado, boolean status, Animal animal, Usuario adotante) {
+	this.id = id;
+	this.dataHorario = dataHorario;
+	this.localizacao = localizacao;
+	this.editado = editado;
+	this.status = status;
+	this.animal = animal;
+	this.adotante = adotante;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public boolean isEmpty() {
+	return !(this.animal != null && this.adotante != null && this.localizacao != null && this.dataHorario != null);
+    }
 
-	public Date getDataHorario() {
-		return dataHorario;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public void setDataHorario(Date dataHorario) {
-		this.dataHorario = dataHorario;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public String getLocalizacao() {
-		return localizacao;
-	}
+    public Date getDataHorario() {
+	return dataHorario;
+    }
 
-	public void setLocalizacao(String localizacao) {
-		this.localizacao = localizacao;
-	}
+    public void setDataHorario(Date dataHorario) {
+	this.dataHorario = dataHorario;
+    }
 
-	public boolean isEditado() {
-		return editado;
-	}
+    public String getLocalizacao() {
+	return localizacao;
+    }
 
-	public void setEditado(boolean editado) {
-		this.editado = editado;
-	}
+    public void setLocalizacao(String localizacao) {
+	this.localizacao = localizacao;
+    }
 
-	public boolean isStatus() {
-		return status;
-	}
+    public boolean isEditado() {
+	return editado;
+    }
 
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+    public void setEditado(boolean editado) {
+	this.editado = editado;
+    }
 
-	public Animal getAnimal() {
-		return animal;
-	}
+    public boolean isStatus() {
+	return status;
+    }
 
-	public void setAnimal(Animal animal) {
-		this.animal = animal;
-	}
+    public void setStatus(boolean status) {
+	this.status = status;
+    }
 
-	public PessoaFisica getAdotante() {
-		return adotante;
-	}
+    public Animal getAnimal() {
+	return animal;
+    }
 
-	public void setAdotante(PessoaFisica adotante) {
-		this.adotante = adotante;
-	}
+    public void setAnimal(Animal animal) {
+	this.animal = animal;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public Usuario getAdotante() {
+	return adotante;
+    }
+
+    public void setAdotante(Usuario adotante) {
+	this.adotante = adotante;
+    }
+
+    public static long getSerialversionuid() {
+	return serialVersionUID;
+    }
 
 }
