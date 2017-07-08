@@ -5,7 +5,12 @@
  */
 package Persistencia;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
 import Modelo.PessoaJuridica;
+import util.JpaUtil;
 
 /**
  *
@@ -14,7 +19,17 @@ import Modelo.PessoaJuridica;
 public class PessoaJuridicaDao extends CrudDao<PessoaJuridica>{
     
     public PessoaJuridicaDao() {
-	super(PessoaJuridica.class);
+    	super(PessoaJuridica.class);
     }
     
+    public List<PessoaJuridica> listarOngs() {
+//        List<PessoaJuridica> lista = listarTodos();
+//        for(PessoaJuridica pj: lista){
+//        	if(pj.getPermissao().getNome().equals("ONG")){
+//        		lista.remove(pj);
+//        	}
+//        }
+//        return lista;
+    	return listarTodos();
+    }
 }

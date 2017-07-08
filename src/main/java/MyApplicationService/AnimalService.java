@@ -29,12 +29,14 @@ import javax.ws.rs.PathParam;
  */
 @Path("animal")
 public class AnimalService {
+	
+	AnimalDao dao = new AnimalDao();
+	
    // "http://localhost:8080/TesteWS/rest/animal"
    @GET
    public String listar()
    {
        List<Animal> animais = null;
-       AnimalDao dao = new AnimalDao();
        animais = dao.listarTodos();
        
        Gson gson = new Gson();
@@ -50,7 +52,6 @@ public class AnimalService {
        
        Gson gson = new Gson();
        String json = null;
-       AnimalDao dao = new AnimalDao();
        json = gson.toJson(dao.pesquisarPorId(idUsuario));
        
        return json;
@@ -63,7 +64,6 @@ public class AnimalService {
        Gson gson = new Gson();
        Animal a = gson.fromJson(json, Animal.class);
        
-       AnimalDao dao = new AnimalDao();
        dao.inserir(a);
        
        String jsonSaida = gson.toJson(a);
@@ -78,7 +78,6 @@ public class AnimalService {
        Gson gson = new Gson();
        Animal a = gson.fromJson(json, Animal.class);
        
-       AnimalDao dao = new AnimalDao();
        dao.alterar(a);
        
        String jsonSaida = gson.toJson(a);

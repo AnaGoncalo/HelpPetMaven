@@ -23,14 +23,15 @@ import javax.ws.rs.PathParam;
 @Path("ongs")
 public class OngService {
     
+	PessoaJuridicaDao dao = new PessoaJuridicaDao();
+	
     // "http://localhost:8080/TesteWS/rest/ongs"
    @GET
-   public String listarPJs(){
+   public String listarONGs(){
        
        Gson gson = new Gson();
        String json = null;
-       PessoaJuridicaDao dao = new PessoaJuridicaDao();
-       json = gson.toJson(dao.listarTodos());
+       json = gson.toJson(dao.listarOngs());
        
        return json;
    }

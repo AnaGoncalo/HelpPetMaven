@@ -62,7 +62,8 @@ public abstract class CrudDao<T> {
      * e FALSE se houver um erro durante a persitência.
      */
     public boolean alterar(T entidade) {
-        EntityManager em = Banco.getInstance().getEntityManager();;
+//        EntityManager em = Banco.getInstance().getEntityManager();;
+    	EntityManager em = JpaUtil.getEntityManager();
         try {
             em.getTransaction().begin();
             em.merge(entidade);
@@ -81,7 +82,8 @@ public abstract class CrudDao<T> {
      * e FALSE se houver um erro durante a persitência.
      */
     public boolean excluir(T entidade){
-        EntityManager em = Banco.getInstance().getEntityManager();;
+//        EntityManager em = Banco.getInstance().getEntityManager();
+    	EntityManager em = JpaUtil.getEntityManager();
         try {
             //em = getEntityManager();
             em.getTransaction().begin();
@@ -100,7 +102,8 @@ public abstract class CrudDao<T> {
      * @return Retorna uma entidade genérica caso o Id seja encontrado.
      */
     public T pesquisarPorId(long id) {
-        EntityManager em = Banco.getInstance().getEntityManager();
+//        EntityManager em = Banco.getInstance().getEntityManager();
+    	EntityManager em = JpaUtil.getEntityManager();
         try {
             //em = getEntityManager();
             T t = em.find(entityClass, id);

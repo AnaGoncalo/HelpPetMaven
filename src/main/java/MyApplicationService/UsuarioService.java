@@ -6,7 +6,10 @@
 package MyApplicationService;
 
 import Modelo.PessoaFisica;
+import Modelo.PessoaJuridica;
 import Modelo.Usuario;
+import Persistencia.PessoaFisicaDao;
+import Persistencia.PessoaJuridicaDao;
 import Persistencia.UsuarioDao;
 
 import com.google.gson.Gson;
@@ -28,6 +31,8 @@ import javax.ws.rs.PathParam;
 public class UsuarioService {
 	
 	UsuarioDao dao = new UsuarioDao();
+	PessoaFisicaDao pfdao = new PessoaFisicaDao();
+	PessoaJuridicaDao pjdao = new PessoaJuridicaDao();
     
    // "http://localhost:8080/TesteWS/rest/usuario"
    @POST
@@ -46,8 +51,16 @@ public class UsuarioService {
    public String editarUsuario(String json) throws SQLException{
        Gson gson = new Gson();
        Usuario u = gson.fromJson(json, Usuario.class);
-       
-       dao.AttUsuario(u);
+       PessoaFisica pf;
+       PessoaJuridica pj;
+       if(u.getPermissao().equals("Helper")){
+    	   pf = gson.fromJson(json, PessoaFisica.class);
+    	   pfdao.alterar(pf);
+       }
+       else{
+    	   pj = gson.fromJson(json, PessoaJuridica.class);
+    	   pjdao.alterar(pj);
+       }
        
        String jsonSaida = gson.toJson(u);
        return jsonSaida;

@@ -24,18 +24,43 @@ public class UsuarioDao extends CrudDao<Usuario> {
     }
     
     public boolean AddUsuario(Usuario usuario){
-    	if(usuario.getPermissao().getNome().equals("Helper"))
-    		return pfdao.inserir((PessoaFisica) usuario);
-    	else
-    		return pjdao.inserir((PessoaJuridica) usuario);
-    }
-    
-    public boolean AttUsuario(Usuario usuario){
-    	if(usuario.getPermissao().getNome().equals("Helper"))
-    		return pfdao.alterar((PessoaFisica) usuario);
-    	else
-    		return pjdao.alterar((PessoaJuridica) usuario);
-    	
+    	if(usuario.getPermissao().getNome().equals("Helper")){
+    		PessoaFisica pf = new PessoaFisica();
+    		pf.setEmail(usuario.getEmail());
+    		pf.setFoto(usuario.getFoto());
+    		pf.setLocalizacao(usuario.getLocalizacao());
+    		pf.setNascimento(usuario.getNascimento());
+    		pf.setNome(usuario.getNome());
+    		pf.setSenha(usuario.getSenha());
+    		pf.setTelefone(usuario.getTelefone());
+    		pf.setPermissao(usuario.getPermissao());
+    		pf.setCpf(null);
+    		pf.setAnimais(null);
+    		pf.setAnuncios(null);
+    		pf.setEncontros(null);
+    		pf.setEventos(null);
+    		pf.setExperiencias(null);
+    		return pfdao.inserir(pf);
+    	}
+    	else{
+    		PessoaJuridica pj = new PessoaJuridica();
+    		pj.setEmail(usuario.getEmail());
+    		pj.setFoto(usuario.getFoto());
+    		pj.setLocalizacao(usuario.getLocalizacao());
+    		pj.setNascimento(usuario.getNascimento());
+    		pj.setNome(usuario.getNome());
+    		pj.setSenha(usuario.getSenha());
+    		pj.setTelefone(usuario.getTelefone());
+    		pj.setPermissao(usuario.getPermissao());
+    		pj.setCnpj(null);
+    		pj.setFuncionamento(null);
+    		pj.setEstoques(null);
+    		pj.setAnimais(null);
+    		pj.setAnuncios(null);
+    		pj.setEventos(null);
+    		pj.setExperiencias(null);
+    		return pjdao.inserir(pj);
+    	}
     }
     
     public boolean RemUsuario(Usuario usuario){
