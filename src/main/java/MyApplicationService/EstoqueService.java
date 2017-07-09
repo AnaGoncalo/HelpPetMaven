@@ -67,14 +67,14 @@ public class EstoqueService {
        return a.getProduto() + " excluido!";
    }
    
-   // "http://localhost:8080/TesteWS/rest/estoque/{idUsuario}"
+   // "http://localhost:8080/TesteWS/rest/estoque/{idEstoque}"
    @GET
-   @Path("{idUsuario}")
-   public String listarPorId(@PathParam("idUsuario") int idUsuario){
+   @Path("{idEstoque}")
+   public String listarPorId(@PathParam("idEstoque") int idEstoque){
        
        Gson gson = new Gson();
        String json = null;
-       json = gson.toJson(dao.pesquisarPorId(idUsuario));
+       json = gson.toJson(dao.pesquisarPorId(idEstoque));
        
        return json;
    }

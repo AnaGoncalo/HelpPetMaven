@@ -74,15 +74,15 @@ public class AnuncioService {
        return a.getTitulo() + " excluido!";
    }
    
-   // "http://localhost:8080/TesteWS/rest/anuncio/{idUsuario}"
+   // "http://localhost:8080/TesteWS/rest/anuncio/{idAnuncio}"
    @GET
-   @Path("{idUsuario}")
-   public String listarPorId(@PathParam("idUsuario") int idUsuario){
+   @Path("{idAnuncio}")
+   public String listarPorId(@PathParam("idUsuario") int idAnuncio){
        
        Gson gson = new Gson();
        String json = null;
        AnuncioDao dao = new AnuncioDao();
-       json = gson.toJson(dao.pesquisarPorId(idUsuario));
+       json = gson.toJson(dao.pesquisarPorId(idAnuncio));
        
        return json;
    }

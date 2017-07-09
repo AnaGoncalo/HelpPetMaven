@@ -67,13 +67,13 @@ public class ExperienciaService {
        return "ok";
    }
    
-   // "http://localhost:8080/TesteWS/rest/experiencia/{idUsuario}"
+   // "http://localhost:8080/TesteWS/rest/experiencia/{idExperiencia}"
    @GET
-   @Path("{idUsuario}")
-   public String listarPorId(@PathParam("idUsuario") int idUsuario){
+   @Path("{idExperiencia}")
+   public String listarPorId(@PathParam("idUsuario") int idExperiencia){
        Gson gson = new Gson();
        String json = null;
-       json = gson.toJson(dao.pesquisarPorId(idUsuario));
+       json = gson.toJson(dao.pesquisarPorId(idExperiencia));
        
        return json;
    }

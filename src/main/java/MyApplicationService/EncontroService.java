@@ -65,15 +65,15 @@ public class EncontroService {
        return a.getId() + " excluido!";
    }
    
-   // "http://localhost:8080/TesteWS/rest/encontro/{idUsuario}"
+   // "http://localhost:8080/TesteWS/rest/encontro/{idEncontro}"
    @GET
-   @Path("{idUsuario}")
-   public String listarPorId(@PathParam("idUsuario") int idUsuario){
+   @Path("{idEncontro}")
+   public String listarPorId(@PathParam("idEncontro") int idEncontro){
        
        Gson gson = new Gson();
        String json = null;
        EncontroDao dao = new EncontroDao();
-       json = gson.toJson(dao.pesquisarPorId(idUsuario));
+       json = gson.toJson(dao.pesquisarPorId(idEncontro));
        
        return json;
    }

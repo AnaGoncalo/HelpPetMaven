@@ -85,6 +85,19 @@ public class UsuarioService {
 	String jsonSaida = u.getNome() + " excluido";
 	return jsonSaida;
     }
+    
+    /*
+     * "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}"
+     */
+    @GET
+    @Path("{idUsuario}")
+    public String buscarUsuarioPorId(@PathParam("idUsuario") int idUsuario) {
+    	Gson gson = new Gson();
+    	String json = null;
+    	
+    	json = gson.toJson(dao.pesquisarPorId((long) idUsuario));
+    	return json;
+    }
 
     /*
      * "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}/animal"

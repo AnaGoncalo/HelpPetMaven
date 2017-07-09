@@ -71,14 +71,14 @@ public class EventoService {
        return "ok";
    }
    
-   // "http://localhost:8080/TesteWS/rest/evento/{idUsuario}"
+   // "http://localhost:8080/TesteWS/rest/evento/{idEvento}"
    @GET
-   @Path("{idUsuario}")
-   public String listarPorUsuario(@PathParam("idUsuario") int idUsuario){
+   @Path("{idEvento}")
+   public String listarPorId(@PathParam("idEvento") int idEvento){
        
        Gson gson = new Gson();
        String json = null;
-       json = gson.toJson(dao.pesquisarPorId(idUsuario));
+       json = gson.toJson(dao.pesquisarPorId(idEvento));
        
        return json;
    }
