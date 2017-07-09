@@ -7,6 +7,11 @@ package MyApplicationService;
 
 import Persistencia.UsuarioDao;
 import com.google.gson.Gson;
+
+import Modelo.Usuario;
+
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
@@ -23,9 +28,11 @@ public class OngService {
     @GET
     public String listarONGs() {
 
+    List<Usuario> usuarios = null;
+    usuarios = dao.listarOngs();
+    
 	Gson gson = new Gson();
-	String json = null;
-	json = gson.toJson(dao.GetOngs());
+	String json = gson.toJson(usuarios);
 
 	return json;
     }

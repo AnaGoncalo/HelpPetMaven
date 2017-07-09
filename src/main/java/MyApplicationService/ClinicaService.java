@@ -7,6 +7,11 @@ package MyApplicationService;
 
 import Persistencia.UsuarioDao;
 import com.google.gson.Gson;
+
+import Modelo.Usuario;
+
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
@@ -16,15 +21,18 @@ import javax.ws.rs.Path;
  */
 @Path("clinicas")
 public class ClinicaService {
+	
+	UsuarioDao dao = new UsuarioDao();
 
     // "http://localhost:8080/TesteWS/rest/clinicas"
     @GET
-    public String listarPJs() {
+    public String listarClinicasPetshos() {
 
-	Gson gson = new Gson();
-	String json = null;
-	UsuarioDao dao = new UsuarioDao();
-	json = gson.toJson(dao.GetClinicasPetshops());
+    	List<Usuario> usuarios = null;
+        usuarios = dao.listarClinicasPetshops();
+        
+    	Gson gson = new Gson();
+    	String json = gson.toJson(usuarios);
 
 	return json;
     }

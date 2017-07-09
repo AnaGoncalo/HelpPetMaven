@@ -6,6 +6,8 @@
 package Persistencia;
 
 import Modelo.Usuario;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,24 +20,26 @@ public class UsuarioDao extends CrudDao<Usuario> {
 	super(Usuario.class);
     }
     
-    public List<Usuario> GetClinicasPetshops(){
-	List<Usuario> lista = listarTodos();
-	for(Usuario u : lista){
-	    if(!(u.getPermissao().getNome().equals("ClinicaPetshop"))){
-		lista.remove(u);
-	    }
-	}
-	return lista;
+    public List<Usuario> listarClinicasPetshops(){
+		List<Usuario> lista = listarTodos();
+		List<Usuario> retorno = new ArrayList<Usuario>();
+		for(Usuario u : lista){
+		    if(u.getPermissao().getId() == 3){
+		    	retorno.add(u);
+		    }
+		}
+		return retorno;
     }
     
-    public List<Usuario> GetOngs(){
-	List<Usuario> lista = listarTodos();
-	for(Usuario u : lista){
-	    if(!(u.getPermissao().getNome().equals("ONG"))){
-		lista.remove(u);
-	    }
-	}
-	return lista;
+    public List<Usuario> listarOngs(){
+    	List<Usuario> lista = listarTodos();
+		List<Usuario> retorno = new ArrayList<Usuario>();
+		for(Usuario u : lista){
+		    if(u.getPermissao().getId() == 2){
+		    	retorno.add(u);
+		    }
+		}
+		return retorno;
     }
 
     public Usuario Logar(Usuario usuario) {

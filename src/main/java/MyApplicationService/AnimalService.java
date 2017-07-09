@@ -10,12 +10,7 @@ import Modelo.Animal;
 import Persistencia.AnimalDao;
 
 import com.google.gson.Gson;
-import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.POST;
@@ -37,7 +32,7 @@ public class AnimalService {
    public String listar()
    {
        List<Animal> animais = null;
-       animais = dao.listarNaoAdotados();
+       animais = dao.listarTodos();
        
        Gson gson = new Gson();
        String json = gson.toJson(animais);
@@ -45,14 +40,14 @@ public class AnimalService {
        return json;
    }
    
-   // "http://localhost:8080/TesteWS/rest/animal/{idUsuario}"
+   // "http://localhost:8080/TesteWS/rest/animal/{idAnimal}"
    @GET
-   @Path("{idUsuario}")
-   public String listarPorUsuario(@PathParam("idUsuario") int idUsuario){
+   @Path("{idAnimal}")
+   public String listarPorId(@PathParam("idAnimal") int idAnimal){
        
        Gson gson = new Gson();
        String json = null;
-       json = gson.toJson(dao.pesquisarPorId(idUsuario));
+       json = gson.toJson(dao.pesquisarPorId(idAnimal));
        
        return json;
    }

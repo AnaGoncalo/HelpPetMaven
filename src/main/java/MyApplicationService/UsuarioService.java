@@ -5,7 +5,19 @@
  */
 package MyApplicationService;
 
+import Modelo.Animal;
+import Modelo.Anuncio;
 import Modelo.Usuario;
+import Modelo.Evento;
+import Modelo.Estoque;
+import Modelo.Experiencia;
+import Modelo.Encontro;
+import Persistencia.AnimalDao;
+import Persistencia.AnuncioDao;
+import Persistencia.EncontroDao;
+import Persistencia.EstoqueDao;
+import Persistencia.EventoDao;
+import Persistencia.ExperienciaDao;
 import Persistencia.UsuarioDao;
 import com.google.gson.Gson;
 import java.sql.SQLException;
@@ -24,7 +36,19 @@ import javax.ws.rs.PathParam;
 public class UsuarioService {
 
     UsuarioDao dao = new UsuarioDao();
+    AnimalDao daoA = new AnimalDao();
+    AnuncioDao daoAn = new AnuncioDao();
+    EstoqueDao daoEs = new EstoqueDao();
+    EventoDao daoEv = new EventoDao();
+    EncontroDao daoEn = new EncontroDao();
+    ExperienciaDao daoEx = new ExperienciaDao();
 
+    @GET
+    public String listarUsuarios(){
+    	Gson gson = new Gson();
+    	return gson.toJson(dao.listarTodos());
+    }
+    
     // "http://localhost:8080/TesteWS/rest/usuario"
     @POST
     public String cadastrarUsuario(String json) throws SQLException {
@@ -62,23 +86,93 @@ public class UsuarioService {
 	return jsonSaida;
     }
 
-    // "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}"
+    /*
+     * "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}/animal"
+     */
     @GET
-    @Path("{idUsuario}")
-    public String listarPorUsuario(@PathParam("idUsuario") int idUsuario) {
-
-	Gson gson = new Gson();
-	String json = null;
-//       try {
-//           UsuarioDAO dao = new UsuarioDAO();
-//           json = gson.toJson(dao.buscarById(idUsuario));
-////           Usuario u = gson.fromJson(json, Usuario.class);
-////           if(u.getIdPermissao() == 1)
-////               json = gson.toJson(PessoaFisicaDAO.byId(u.getIdUsuario()));
-//       } catch (SQLException ex) {
-//           Logger.getLogger(UsuarioService.class.getName()).log(Level.SEVERE, null, ex);
-//       }
-
-	return json;
+    @Path("{idUsuario}/animal")
+    public String listarAnimaisPorUsuario(@PathParam("idUsuario") int idUsuario) {
+    	Gson gson = new Gson();
+    	String json = null;
+    	for(Animal a : daoA.listarPorUsuario((long) idUsuario)){
+    		System.out.println("Animal " + a.getNome());
+    	}
+    	json = gson.toJson(daoA.listarPorUsuario((long) idUsuario));
+    	return json;
+    }
+    
+    /*
+     * "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}/anuncio"
+     */
+    @GET
+    @Path("{idUsuario}/anuncio")
+    public String listarAnunciosPorUsuario(@PathParam("idUsuario") int idUsuario) {
+    	Gson gson = new Gson();
+    	String json = null;
+    	for(Anuncio a : daoAn.listarPorUsuario((long) idUsuario)){
+    		System.out.println("Anuncio " + a.getTitulo());
+    	}
+    	json = gson.toJson(daoAn.listarPorUsuario((long) idUsuario));
+    	return json;
+    }
+    
+    /*
+     * "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}/evento"
+     */
+    @GET
+    @Path("{idUsuario}/evento")
+    public String listarEventosPorUsuario(@PathParam("idUsuario") int idUsuario) {
+    	Gson gson = new Gson();
+    	String json = null;
+    	for(Evento a : daoEv.listarPorUsuario((long) idUsuario)){
+    		System.out.println("Evento " + a.getNome());
+    	}
+    	json = gson.toJson(daoEv.listarPorUsuario((long) idUsuario));
+    	return json;
+    }
+    
+    /*
+     * "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}/estoque"
+     */
+    @GET
+    @Path("{idUsuario}/estoque")
+    public String listarEstoquesPorUsuario(@PathParam("idUsuario") int idUsuario) {
+    	Gson gson = new Gson();
+    	String json = null;
+    	for(Estoque a : daoEs.listarPorUsuario((long) idUsuario)){
+    		System.out.println("Estoque " + a.getProduto());
+    	}
+    	json = gson.toJson(daoEs.listarPorUsuario((long) idUsuario));
+    	return json;
+    }
+    
+    /*
+     * "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}/experiencia"
+     */
+    @GET
+    @Path("{idUsuario}/experiencia")
+    public String listarExperienciasPorUsuario(@PathParam("idUsuario") int idUsuario) {
+    	Gson gson = new Gson();
+    	String json = null;
+    	for(Experiencia a : daoEx.listarPorUsuario((long) idUsuario)){
+    		System.out.println("Experiencia " + a.getTitulo());
+    	}
+    	json = gson.toJson(daoEx.listarPorUsuario((long) idUsuario));
+    	return json;
+    }
+    
+    /*
+     * "http://localhost:8080/TesteWS/rest/usuario/{idUsuario}/encontro"
+     */
+    @GET
+    @Path("{idUsuario}/encontro")
+    public String listarEncontroPorUsuario(@PathParam("idUsuario") int idUsuario) {
+    	Gson gson = new Gson();
+    	String json = null;
+    	for(Encontro a : daoEn.listarPorUsuario((long) idUsuario)){
+    		System.out.println("Encontro " + a.getAnimal().getNome());
+    	}
+    	json = gson.toJson(daoEn.listarPorUsuario((long) idUsuario));
+    	return json;
     }
 }

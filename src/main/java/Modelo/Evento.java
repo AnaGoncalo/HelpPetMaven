@@ -15,32 +15,20 @@
  */
 package Modelo;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  *
  * @author anne
  */
 @Entity
-public class Evento implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
+public class Evento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -141,12 +129,6 @@ public class Evento implements Serializable {
 
 	public void setResponsavel(Usuario responsavel) {
 		this.responsavel = responsavel;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-    
-    
+	}    
     
 }

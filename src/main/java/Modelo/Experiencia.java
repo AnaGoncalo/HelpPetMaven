@@ -1,31 +1,19 @@
 package Modelo;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  *
  * @author anne
  */
 @Entity
-public class Experiencia implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
+public class Experiencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -114,10 +102,6 @@ public class Experiencia implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
     
 }

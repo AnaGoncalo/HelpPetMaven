@@ -8,10 +8,7 @@ package MyApplicationService;
 import Modelo.Denuncia;
 import Persistencia.DenunciaDao;
 import com.google.gson.Gson;
-
-import java.sql.Date;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -37,6 +34,7 @@ public class DenunciaService {
        
        return json;
    } 
+   
    // "http://localhost:8080/HelpPetMaven/rest/denuncia"
    @POST
    public String cadastrarDenuncia(String json) throws SQLException{
@@ -44,9 +42,7 @@ public class DenunciaService {
        Denuncia a = gson.fromJson(json, Denuncia.class);
 
        dao.inserir(a);
-//       String jsonSaida = gson.toJson(a);
-       String jsonSaida = "Ok!";
+       String jsonSaida = gson.toJson(a);
        return jsonSaida;
-       
    }
 }

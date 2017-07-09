@@ -1,7 +1,5 @@
 package Modelo;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,9 +11,7 @@ import javax.persistence.ManyToOne;
  * @author anne
  */
 @Entity
-public class Usuario implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -159,8 +155,5 @@ public class Usuario implements Serializable {
 	this.permissao = permissao;
     }
 
-    public static long getSerialversionuid() {
-	return serialVersionUID;
-    }
 
 }

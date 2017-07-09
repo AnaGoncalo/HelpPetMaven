@@ -1,17 +1,13 @@
 package Modelo;
 
-import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
-public class UserTeste implements Serializable {
+public class UserTeste {
 
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +15,6 @@ public class UserTeste implements Serializable {
 
     private String nome;
     
-    @OneToMany(mappedBy = "responsavel")
-    private Set<ModeloTeste> lista;
-
     public UserTeste() {
 	super();
     }
@@ -46,18 +39,6 @@ public class UserTeste implements Serializable {
 
     public void setNome(String nome) {
 	this.nome = nome;
-    }
-
-    public Set<ModeloTeste> getLista() {
-	return lista;
-    }
-
-    public void setLista(Set<ModeloTeste> lista) {
-	this.lista = lista;
-    }
-
-    public static long getSerialversionuid() {
-	return serialVersionUID;
     }
 
 }

@@ -1,36 +1,21 @@
 package Modelo;
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  *
  * @author anne
  */
 @Entity
-public class Animal implements Serializable {
+public class Animal {
     
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -58,13 +43,15 @@ public class Animal implements Serializable {
     
     private String localizacao;
     
+    @ManyToOne
+    private Usuario responsavel;
+    
     public Animal() {
 		super();
 	}
 
 	public Animal(Long id, String nome, String tipo, String especie, String raca, String idade, String sexo,
-			String descricao, String foto, Date cadastro, boolean status, String localizacao, Usuario responsavel,
-			Set<Encontro> encontros) {
+			String descricao, String foto, Date cadastro, boolean status, String localizacao, Usuario responsavel) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -79,7 +66,6 @@ public class Animal implements Serializable {
 		this.status = status;
 		this.localizacao = localizacao;
 		this.responsavel = responsavel;
-		this.encontros = encontros;
 	}
 
 	public Long getId() {
@@ -185,26 +171,8 @@ public class Animal implements Serializable {
 	public void setResponsavel(Usuario responsavel) {
 		this.responsavel = responsavel;
 	}
-
-	public Set<Encontro> getEncontros() {
-		return encontros;
-	}
-
-	public void setEncontros(Set<Encontro> encontros) {
-		this.encontros = encontros;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@ManyToOne
-    private Usuario responsavel;
-    
-    @OneToMany(mappedBy = "animal")
-    private Set<Encontro> encontros;
-
-    public boolean isEmpty(){
+	
+	public boolean isEmpty(){
 	return !(this.nome != null && this.tipo != null && this.especie != null && this.raca != null && this.idade != null && this.sexo != null && this.localizacao != null);
     }
     

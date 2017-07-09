@@ -9,10 +9,7 @@ import Modelo.Anuncio;
 import Persistencia.AnuncioDao;
 
 import com.google.gson.Gson;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.POST;
@@ -26,11 +23,13 @@ import javax.ws.rs.PathParam;
  */
 @Path("anuncio")
 public class AnuncioService {
+	
+	AnuncioDao dao = new AnuncioDao();
+	
     // "http://localhost:8080/TesteWS/rest/anuncio"
    @GET
    public String listarAnuncio()
    {
-       AnuncioDao dao = new AnuncioDao();
        List<Anuncio> anuncios = dao.listarTodos();
        
        Gson gson = new Gson();
@@ -40,7 +39,7 @@ public class AnuncioService {
        }
        json = gson.toJson(anuncios);
        
-       return "ok";
+       return json;
    } 
    
    // "http://localhost:8080/TesteWS/rest/anuncio"
@@ -48,7 +47,6 @@ public class AnuncioService {
    public String cadastrarAnuncio(String json) {
        Gson gson = new Gson();
        Anuncio a = gson.fromJson(json, Anuncio.class);
-       AnuncioDao dao = new AnuncioDao();
        dao.inserir(a);
        
        String jsonSaida = gson.toJson(a);
@@ -59,9 +57,7 @@ public class AnuncioService {
    @PUT
    public String editarAnuncio(String json) {
        Gson gson = new Gson();
-       Anuncio a = gson.fromJson(json, Anuncio.class);
-       
-       AnuncioDao dao = new AnuncioDao();
+       Anuncio a = gson.fromJson(json, Anuncio.class);       
        dao.alterar(a);
        
        String jsonSaida = gson.toJson(a);
@@ -73,7 +69,6 @@ public class AnuncioService {
    public String excluirAnuncio(String json) {
        Gson gson = new Gson();
        Anuncio a = gson.fromJson(json, Anuncio.class); 
-       AnuncioDao dao = new AnuncioDao();
        dao.excluir(a);
        
        return a.getTitulo() + " excluido!";
@@ -82,7 +77,7 @@ public class AnuncioService {
    // "http://localhost:8080/TesteWS/rest/anuncio/{idUsuario}"
    @GET
    @Path("{idUsuario}")
-   public String listarPorUsuario(@PathParam("idUsuario") int idUsuario){
+   public String listarPorId(@PathParam("idUsuario") int idUsuario){
        
        Gson gson = new Gson();
        String json = null;

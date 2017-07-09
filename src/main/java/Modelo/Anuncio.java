@@ -15,7 +15,6 @@
  */
 package Modelo;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,10 +26,8 @@ import javax.persistence.ManyToOne;
  * @author anne
  */
 @Entity
-public class Anuncio implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+public class Anuncio {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -106,10 +103,6 @@ public class Anuncio implements Serializable {
 
     public void setResponsavel(Usuario responsavel) {
 	this.responsavel = responsavel;
-    }
-
-    public static long getSerialversionuid() {
-	return serialVersionUID;
     }
 
 }

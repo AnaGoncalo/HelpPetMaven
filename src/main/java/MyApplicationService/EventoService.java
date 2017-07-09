@@ -11,8 +11,6 @@ import Persistencia.EventoDao;
 import com.google.gson.Gson;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -26,13 +24,14 @@ import javax.ws.rs.PathParam;
  */
 @Path("evento")
 public class EventoService {
+	
+	EventoDao dao = new EventoDao();
+	
     // "http://localhost:8080/TesteWS/rest/evento"
    @GET
    public String listarEvento() throws SQLException
    {
-       EventoDao dao = new EventoDao();
        List<Evento> eventos = dao.listarTodos();
-       
        Gson gson = new Gson();
        String json = "";
        json = gson.toJson(eventos);
@@ -45,7 +44,6 @@ public class EventoService {
    public String cadastrarEvento(String json) throws SQLException{
        Gson gson = new Gson();
        Evento a = gson.fromJson(json, Evento.class);
-       EventoDao dao = new EventoDao();
        dao.inserir(a);
        
        String jsonSaida = gson.toJson(a);
@@ -57,7 +55,6 @@ public class EventoService {
    public String editarEvento(String json) throws SQLException{
        Gson gson = new Gson();
        Evento a = gson.fromJson(json, Evento.class);
-       EventoDao dao = new EventoDao();
        dao.alterar(a);
        
        String jsonSaida = gson.toJson(a);
@@ -69,7 +66,6 @@ public class EventoService {
    public String excluirEvento(String json) throws SQLException{
        Gson gson = new Gson();
        Evento a = gson.fromJson(json, Evento.class);
-       EventoDao dao = new EventoDao();
        dao.excluir(a);
        
        return "ok";
@@ -82,7 +78,6 @@ public class EventoService {
        
        Gson gson = new Gson();
        String json = null;
-       EventoDao dao = new EventoDao();
        json = gson.toJson(dao.pesquisarPorId(idUsuario));
        
        return json;
