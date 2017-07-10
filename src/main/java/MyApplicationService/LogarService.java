@@ -9,9 +9,6 @@ import Modelo.Usuario;
 import Persistencia.UsuarioDao;
 
 import com.google.gson.Gson;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 

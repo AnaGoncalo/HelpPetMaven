@@ -7,7 +7,6 @@ package MyApplicationService;
 
 import com.google.gson.Gson;
 
-import Modelo.ModeloTeste;
 import Modelo.Denuncia;
 import Persistencia.DenunciaDao;
 
@@ -38,14 +37,14 @@ public class MyAppService {
     //http://localhost:8080/TesteWS/rest/myapp"
     @POST
     public String Testar2(String json) {
-        Gson gson = new Gson();
+//        Gson gson = new Gson();
         System.out.println(json);
-        ModeloTeste mt = gson.fromJson(json, ModeloTeste.class);
+//        ModeloTeste mt = gson.fromJson(json, ModeloTeste.class);
 //        System.out.println("Deu certo " + mt.getNomeTeste());
         //ModeloTesteDAO.salvar(mt);
-        String jsonSaida = "";
+        String jsonSaida = "ok";
 //        json = gson.toJson(mt);
-        return "ok";
+        return jsonSaida;
         //return "Oi post";
     }
 }
