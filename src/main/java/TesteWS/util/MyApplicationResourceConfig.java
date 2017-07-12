@@ -5,6 +5,7 @@
  */
 package TesteWS.util;
 
+import MyApplicationService.CORSFilter;
 import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 /**
@@ -16,5 +17,6 @@ public class MyApplicationResourceConfig extends ResourceConfig{
     
     public MyApplicationResourceConfig() {
         packages("MyApplicationService");
+	register(CORSFilter.class);
     }   
 }
