@@ -12,6 +12,7 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.ext.Provider;
 import org.glassfish.jersey.server.ContainerRequest;
 import org.glassfish.jersey.server.ContainerResponse;
 
@@ -19,6 +20,7 @@ import org.glassfish.jersey.server.ContainerResponse;
  *
  * @author anne
  */
+@Provider
 public class CORSFilter implements ContainerResponseFilter {
 
 //    @Override
